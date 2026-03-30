@@ -1,0 +1,167 @@
+
+.menu-list{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    height: 70px;
+    padding-left: 10px;
+    background: blueviolet;
+    
+    
+}
+
+
+
+a{
+color: yellow !important;
+text-decoration: none;
+}
+
+
+.bar{
+    border: 1px solid gray;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 1rem;
+    background-color: green;
+   
+}
+  
+#bar{
+    border: 1px solid gray;
+    padding: 15px;
+    border-radius: 1rem;
+    background: green;
+   
+  
+   
+}
+
+
+
+ h1{
+            display: flex;
+            justify-content: center;
+           color:green;
+           height: 100%;
+        
+         
+
+}
+
+.one{
+    width: 1249px;
+    height: auto;
+    position: sticky;
+}
+
+
+  button{
+         display: flex;
+         justify-self: center;
+         border-radius: 1rem;
+         padding: 15px;
+         background: green;
+         text-decoration: none;
+        }
+
+
+        a:nth-child(1){
+             color: green;
+                 }
+   
+
+
+        @keyframes switch{
+            from{
+                left: 0;
+                color: red;
+            }
+                
+            to{
+                left: 300px;
+                color: purple;
+              
+            }
+      
+        }
+
+        h1{
+            width: auto;
+            height: 100%;
+            
+            animation: switch 3s linear infinite 1s;
+            position: relative;
+
+        }
+
+
+          @keyframes fadeIn {
+            from{
+                opacity: 0;
+                
+            }
+                
+            to{
+                opacity: 1;
+              
+            }
+      
+        }
+        
+.document{
+    opacity: 0;
+    animation: fadeIn 5s forwards infinite 2s;
+
+}
+
+.document{
+    list-style: disc;
+}
+  
+
+.image{
+    display: flex;
+    justify-content: space-around;
+    background: #E8F5F3;
+    
+   
+}
+
+
+
+
+
+
+
+.products {
+  display: inline-block;
+  position: relative;
+ 
+}
+
+.products::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 65, 1, 0.908);
+  color: white;
+  opacity: 0;
+  transition: 0.1s;
+  border-radius: 1rem;
+}
+
+.products.active::after {
+  opacity: 0.8; 
+}
+
+
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    color: green;
+    
+}

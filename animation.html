@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+.document{
+    height: 100px;
+    width: 500px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: appear 3s linear infinite 1S;
+  
+}
+
+@keyframes appear{
+  from{
+    width: 300px;
+    opacity:0;
+    transform: translateX(30px);
+    background: red;
+  }
+  to{
+    width: 300px;
+    opacity:1;
+    transform: translateX(0);
+    background: green;
+  }
+}
+
+</style>
+
+</head>
+<body>
+    
+    <body>
+
+<div class="document">
+
+</div>
+
+<br>
+
+<div class="document">
+  
+</div>
+</body>
+</html>

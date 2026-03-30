@@ -1,0 +1,336 @@
+
+.menu-list{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    height: 70px;
+    padding-left: 10px;
+    background: blueviolet;
+    
+    
+}
+
+
+
+
+
+
+
+
+a{
+color: yellow !important;
+text-decoration: none;
+}
+
+
+
+.bar{
+    border: 1px solid gray;
+    padding: 5px;
+    margin: 10px;
+    border-radius: 1rem;
+    background-color: green;
+   
+}
+  
+#bar{
+    border: 1px solid gray;
+    padding: 15px;
+    border-radius: 1rem;
+    background: green;
+   
+  
+   
+}
+
+    h1{
+            display: flex;
+            justify-content: center;
+           color:green;
+           height: 100%;
+        
+         
+
+}
+
+.one{
+    width: 1249px;
+    height: auto;
+    position: sticky;
+}
+
+
+  button{
+         display: flex;
+         justify-self: center;
+         border-radius: 1rem;
+         padding: 15px;
+         background: green;
+         text-decoration: none;
+        }
+
+
+        a:nth-child(1){
+             color: green;
+                 }
+   
+
+
+        @keyframes switch{
+            from{
+                left: 0;
+                color: red;
+            }
+                
+            to{
+                left: 300px;
+                color: purple;
+              
+            }
+      
+        }
+
+        h1{
+            width: auto;
+            height: 100%;
+            
+            animation: switch 3s linear infinite 1s;
+            position: relative;
+
+        }
+
+
+          @keyframes fadeIn {
+            from{
+                opacity: 0;
+                
+            }
+                
+            to{
+                opacity: 1;
+              
+            }
+      
+        }
+        
+.document{
+    opacity: 0;
+    animation: fadeIn 5s forwards infinite 2s;
+
+}
+
+.document{
+    list-style: disc;
+}
+  
+
+.image{
+    display: flex;
+    justify-content: space-around;
+    background: #E8F5F3;
+    
+   
+}
+   
+h3{
+    display: flex;
+    justify-content: center;
+}
+
+.picture{
+    display: flex;
+    justify-content: space-around;
+    background: #E8F5F3;
+
+}
+
+
+
+
+.dropdown-header {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  background: #f1f1f1;
+  padding: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+
+
+#dropdown-content {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+
+
+
+.dropdown-header1 {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  background: #f1f1f1;
+  padding: 10px;
+}
+
+.hidden1 {
+  display: none;
+}
+
+#dropdown-content1 {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+
+
+
+
+.dropdown-header2 {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  background: #f1f1f1;
+  padding: 10px;
+}
+
+.hidden2 {
+  display: none;
+}
+
+#dropdown-content2 {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+
+
+
+.dropdown-header3 {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  background: #f1f1f1;
+  padding: 10px;
+}
+
+.hidden3 {
+  display: none;
+}
+
+#dropdown-content3 {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+
+
+
+
+
+.dropdown-header4 {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  background: #f1f1f1;
+  padding: 10px;
+}
+
+.hidden4 {
+  display: none;
+}
+
+#dropdown-content4 {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+
+
+
+
+
+.dropdown-header5 {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  background: #f1f1f1;
+  padding: 10px;
+}
+
+.hidden5 {
+  display: none;
+}
+
+#dropdown-content5 {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+
+
+
+
+
+.dropdown-header6 {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  background: #f1f1f1;
+  padding: 10px;
+}
+
+.hidden6 {
+  display: none;
+}
+
+#dropdown-content6 {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+
+
+
+
+
+
+.dropdown-header7 {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  background: #f1f1f1;
+  padding: 10px;
+}
+
+.hidden7 {
+  display: none;
+}
+
+#dropdown-content7 {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+
+
+
+h5{
+  font-size: 25px;
+   
+}
+
+
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    color: green;
+    
+}
