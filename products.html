@@ -11,6 +11,7 @@
   <header>
         <nav class="menu">
             <ul class="menu-list">
+               <li> <img src="icon/log123.jpg" alt="" width="70px" height="40px"></li>
                 <li> <a href="index.html">KILIMax</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="pricing.html">Pricing</a></li>
@@ -18,7 +19,7 @@
                 <li> <a href="partners.html">Partners</a></li>
                 <li> <a href="customer.html">Customer</a></li>
                 <li>
-        <button class="bar"><a href="signin.html">Sign In</a> </button>
+        <button class="signin"><a href="signin.html">Sign In</a> </button>
                 </li>
                 <li>
         <button id="bar"><a href="getstarted.html">Get Started</a></button>
@@ -30,17 +31,16 @@
     
      <div style="display: flex;flex-direction: column;background-color: #E8F5F3;">
                 <h1>The Only Software You Need For <br> Your Wholesale Business</h1>
-        <form action="" method="get" class="form"><button><a href="signin.html">Get a free Demo →</a></button>
-                </form>
+        
 
-                <img src="icon/products.png" alt="">
+                <img id="one" src="icon/products.png" alt="">
             </div>
 
              <div class="img">
-        <img id="one" src="icon/products1.png" alt="" width="1389px">
-        <img id="two" src="icon/image 3.png" alt="" width="1389px">
+        <img id="two" src="icon/products1.png" alt="" >
+        <img id="three" src="icon/image 3.png" alt="" >
 
-                <img id="three" src="icon/img_12.png" alt="" width="1367">
+               
 
             </div>
 
@@ -48,24 +48,24 @@
 
            
               <div> 
-                <div class="products" onclick="toggleGreen(this)">
+                <div class="products">
   <img src="icon/products2.png"></div>
 
-  <div class="products" onclick="toggleGreen(this)">
+  <div class="products" >
   <img src="icon/products2.png"></div>
 
-  <div class="products" onclick="toggleGreen(this)">
+  <div class="products" >
   <img src="icon/products2.png"></div>
   </div>
 
   <div>
-     <div class="products" onclick="toggleGreen(this)">
+     <div class="products" >
   <img src="icon/products2.png"></div>
 
-  <div class="products" onclick="toggleGreen(this)">
+  <div class="products" >
   <img src="icon/products2.png"></div>
 
-  <div class="products" onclick="toggleGreen(this)">
+  <div class="products" >
   <img src="icon/products2.png"></div>
   
   </div>
@@ -111,18 +111,18 @@
 
 
 <footer>
-      <h5 style="font-size: 50px;">KiliMax</h5>
-      <div style="display: flex;background: rgb(3, 47, 3); color: white;">
-       
+      <h5>KiliMax</h5>
+      <div style="display: flex;background: #01241E; color: burlywood">
+        
         <p>KiliMax Software, Powering Businesses <br> Across Africa with AI</p>
-        <ul style="list-style: none;gap: 10px;">
+        <ul class="bottom" style="list-style: none;gap: 10px;">
           <li style="padding: 20px;">Explore</li>
           <li style="padding: 20px;"><a href="products.html">Products</a></li>
           <li style="padding: 20px;"><a href="pricing.html">Pricing</a></li>
           <li style="padding: 20px;"><a href="aboutus.html">About Us</a></li>
         </ul>
 
-        <ul style="list-style: none;gap: 10px;">
+        <ul class="down" style="list-style: none;gap: 10px;">
           <li style="padding: 20px 300px">Connect</li>
 
           <li style="padding: 20px 300px;"><a href="https://www.instagram.com/kilimax.software/" target="_blank" class="footer-social-link" onclick="sendKilimaxWebClick({element_name: 'Instagram',element_id:17,module_name: 'Footer',module_id: 10});">
@@ -146,24 +146,19 @@
                                     <span>LinkedIn</span>
                                 </a></a></li>
           
-          <div style="display: flex;justify-content: center;"> 
-            <li><button style="width: 120px;height: 40px;" class="bar"><a href="signin.html">Sign In</a> </button></li>
-          <li>
-        <button style="width: 120px;height: 40px;" class="bar"><a href="getstarted.html">Get Started</a> </button></li>
-      </div>
+         
          </ul>
       </div>
 
       <div>
         <ul class="footer">
           <li>Copyright  &copy; 2026 QUANTUM TECHNOLOGY HK LIMITED.All rights reserved. </li>
-          <li>Terms of Conditions</li>
-          <li>Privacy Policy</li>
+          <li><a href="terms.html">Terms of Conditions</a></li>
+          <li> <a href="policy.html">Privacy Policy</a></li>
         </ul>
       </div>
 
     </footer>
-
     <script>
 function toggleGreen(el) {
   el.classList.toggle("active");

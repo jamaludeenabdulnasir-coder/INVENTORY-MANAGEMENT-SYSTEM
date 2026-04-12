@@ -5,45 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KiliMax</title>
     <style>
+
+      body {
+  margin: 0;
+  padding-top: 70px;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  background: white;
+  z-index: 1000;
+}
+
+
+
+
+
+
+
+
+
+
         .menu-list{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    list-style: none;
-    height: 70px;
-    padding-left: 10px;
-    background: blueviolet;
-    
-    
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+           list-style: none;
+           height: 100%;
+           margin: 0;
+           padding: 0 20px;
 }
 
 
 
-a{
-color: yellow !important;
+.menu-list a{
+color:black!important;
 text-decoration: none;
+
 }
 
+.menu-list a:hover{
+    color: green !important;
+  }
 
-.bar{
-    border: 1px solid gray;
-    padding: 5px;
+
+.signin{
+    border: 1px solid green;
+    padding: 10px;
     margin: 10px;
     border-radius: 1rem;
-    background-color: green;
-   
-}
+    background-color: white;
+    
+  }
+.signin:hover{
+  background: #EDF9F6;
   
-#bar{
-    border: 1px solid gray;
-    padding: 15px;
-    border-radius: 1rem;
-    background: green;
-   
   
-   
+  }
+.signin a{
+  color:black!important;
+text-decoration: none;
+
+
 }
 
+
+
+  
+#bar{
+    border: 1px solid green;
+    padding: 15px;
+    border-radius: 1rem;
+    background:  white;
+    
+  }
+  #bar:hover{
+    
+     background: #EDF9F6;
+  }
 
 
 h1{
@@ -55,6 +97,40 @@ h1{
          
 
 }
+
+
+.business{
+    border: 1px solid green;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 1rem;
+    background-color: white;
+    
+  }
+.business:hover{
+  background: #EDF9F6;
+   
+  
+  
+  }
+.business a{
+  color:black!important;
+text-decoration: none;
+
+
+}
+
+
+.operations a:hover{
+  color: green!important;
+}
+
+
+
+
+
+
+
 
 .one{
     width: 1249px;
@@ -79,28 +155,37 @@ h1{
    
 
 
-        @keyframes switch{
-            from{
-                left: 0;
-                color: red;
-            }
-                
-            to{
-                left: 300px;
-                color: purple;
-              
-            }
+       @keyframes switch{
+             0% {
+    transform: translateX(0);
+    color: #e10a0a;
+  }
+  50% {
+    transform: translateX(500px);
+    color: #e2f60f;
+  }
+  100% {
+    transform: translateX(929px);
+    color: #193c02;
+  }
       
         }
 
-        h1{
-            width: auto;
-            height: 100%;
-            
-            animation: switch 3s linear infinite 1s;
-            position: relative;
+       h1 {
+  display: inline-block;
+  animation: switch 3s linear infinite alternate;
+}
 
-        }
+body {
+  overflow-x: hidden;
+}
+
+
+          @keyframes fadeInOut {
+  0%   { opacity: 0; }
+  50%  { opacity: 1; }
+  100% { opacity: 0; }
+}
 
 
           @keyframes fadeIn {
@@ -312,13 +397,51 @@ h1{
 }
 
 
+
+  .bottom a {
+  color: burlywood;
+}
+
+  .bottom a:hover {
+  color: white;
+}
+
+
+
+
+
+  .down a {
+  color: burlywood;
+}
+
+  .down a:hover {
+  color: white;
+}
+
+
+
+
+
 .footer{
     display: flex;
     justify-content: space-between;
     list-style: none;
     color: green;
-    
+  }
+
+.footer a{
+  text-decoration: none;
 }
+
+
+
+
+.footer a:hover{
+  
+  color: rgb(130, 130, 207);
+}
+
+
    
     </style>
     </head>
@@ -330,6 +453,7 @@ h1{
     <header>
         <nav class="menu">
             <ul class="menu-list">
+              <li> <img src="icon/log123.jpg" alt="" width="70px" height="40px"></li>
                 <li> <a href="index.html">KILIMax</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="pricing.html">Pricing</a></li>
@@ -337,7 +461,7 @@ h1{
                 <li> <a href="partners.html">Partners</a></li>
                 <li> <a href="customer.html">Customer</a></li>
                 <li>
-        <button class="bar"><a href="signin.html">Sign In</a> </button>
+        <button class="signin"><a href="signin.html">Sign In</a> </button>
                 </li>
                 <li>
         <button id="bar"><a href="getstarted.html">Get Started</a></button>
@@ -353,12 +477,13 @@ h1{
 
             <div class="img">
                 <h6 style="display: flex;justify-content: center;font-size: 70px;">All Business operations, Simplified</h6>
-                <div style="display: flex;justify-content: center;gap: 30px;"> <form action="" method="get" class="form"><button><a href="signin.html">Point of Sale</a></button>
-                </form>
-                 <form action="" method="get" class="form"><button><a href="signin.html">ERP</a></button>
-                </form>
-                 <form action="" method="get" class="form"><button><a href="signin.html">E-Commerce</a></button>
-                </form></div>
+                <div class="operations" style="display: flex;justify-content: center;gap: 30px;"> 
+                  <button class="business"><a href="signin.html">Point of Sale</a></button>
+                
+                 <button class="business"><a href="signin.html">ERP</a></button>
+                
+                <button class="business"><a href="signin.html">E-Commerce</a></button>
+               </div>
 
                 <h6 style="font-size: 30px;font-family: Verdana, Geneva, Tahoma, sans-serif;">KiliPOs: Sell Anywhere,Anytime</h6>
                 <p>Sell oline seamlessly and continue serving customers without internet. Enjoy fast checkout, mobile payment options, multi-terminal access,<br> and seamless integration with your online store.</p>
@@ -558,18 +683,18 @@ h1{
 </div>
 
  <footer>
-      <h5>KiliMax</h5>
-      <div style="display: flex;background: rgb(3, 47, 3); color: white;">
-       
+      <h5 style="font-size: 25px;">KiliMax</h5>
+      <div style="display: flex;background: #01241E; color: burlywood">
+        
         <p>KiliMax Software, Powering Businesses <br> Across Africa with AI</p>
-        <ul style="list-style: none;gap: 10px;">
+        <ul class="bottom" style="list-style: none;gap: 10px;">
           <li style="padding: 20px;">Explore</li>
           <li style="padding: 20px;"><a href="products.html">Products</a></li>
           <li style="padding: 20px;"><a href="pricing.html">Pricing</a></li>
           <li style="padding: 20px;"><a href="aboutus.html">About Us</a></li>
         </ul>
 
-        <ul style="list-style: none;gap: 10px;">
+        <ul class="down" style="list-style: none;gap: 10px;">
           <li style="padding: 20px 300px">Connect</li>
 
           <li style="padding: 20px 300px;"><a href="https://www.instagram.com/kilimax.software/" target="_blank" class="footer-social-link" onclick="sendKilimaxWebClick({element_name: 'Instagram',element_id:17,module_name: 'Footer',module_id: 10});">
@@ -593,19 +718,15 @@ h1{
                                     <span>LinkedIn</span>
                                 </a></a></li>
           
-          <div style="display: flex;justify-content: center;"> 
-            <li><button style="width: 120px;height: 40px;" class="bar"><a href="signin.html">Sign In</a> </button></li>
-          <li>
-        <button style="width: 120px;height: 40px;" class="bar"><a href="getstarted.html">Get Started</a> </button></li>
-      </div>
+         
          </ul>
       </div>
 
       <div>
         <ul class="footer">
           <li>Copyright  &copy; 2026 QUANTUM TECHNOLOGY HK LIMITED.All rights reserved. </li>
-          <li>Terms of Conditions</li>
-          <li>Privacy Policy</li>
+          <li><a href="terms.html">Terms of Conditions</a></li>
+          <li> <a href="policy.html">Privacy Policy</a></li>
         </ul>
       </div>
 

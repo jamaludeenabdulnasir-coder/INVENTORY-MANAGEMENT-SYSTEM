@@ -1,64 +1,122 @@
+ body {
+  margin: 0;
+  padding-top: 70px;
+}
 
-.menu-list{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    list-style: none;
-    height: 70px;
-    padding-left: 10px;
-    background: blueviolet;
-    
-    
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  background: white;
+  z-index: 1000;
+}
+
+.menu-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  height: 100%;
+  margin: 0;
+  padding: 0 20px;
 }
 
 
 
-
-
-
-
-
-a{
-color: yellow !important;
+.menu-list a{
+color:black!important;
 text-decoration: none;
+
 }
 
+ .menu-list a:hover{
+    color: green !important;
+  }
 
 
-.bar{
-    border: 1px solid gray;
-    padding: 5px;
+
+.signin{
+    border: 1px solid green;
+    padding: 10px;
     margin: 10px;
     border-radius: 1rem;
-    background-color: green;
-   
-}
+    background-color: white;
+    box-shadow: inset blue;
+  }
+.signin:hover{
+  background: #EDF9F6;
+  
+  } 
+
   
 #bar{
-    border: 1px solid gray;
+    border: 1px solid green;
     padding: 15px;
     border-radius: 1rem;
-    background: green;
-   
-  
-   
+    background:  white;
+    
+  }
+  #bar:hover{
+    
+     background: #EDF9F6;
+  }
+
+
+
+  .form a {
+  color: black;
+  text-decoration: none;
 }
 
+.form a:hover {
+  color: green;
+  background:#EDF9F6 ;
+}
+  
+  
+
     h1{
-            display: flex;
-            justify-content: center;
-           color:green;
-           height: 100%;
+      display: flex;
+      justify-content: center;
+      color:black;
+      height: 100%;
         
          
 
 }
 
-.one{
-    width: 1249px;
-    height: auto;
-    position: sticky;
+#one{
+    width: 100%;
+   height: auto;
+   object-fit: cover;
+   display: block;
+    
 }
+body {
+  overflow-x: hidden;
+}
+
+#two{
+    width: 100%;
+   height: auto;
+   object-fit: cover;
+   display: block;
+    
+}
+body {
+  overflow-x: hidden;
+}
+
+#three{
+    width: 100%;
+   height: auto;
+   object-fit: cover;
+   display: block;
+    
+}
+
+
 
 
   button{
@@ -66,58 +124,49 @@ text-decoration: none;
          justify-self: center;
          border-radius: 1rem;
          padding: 15px;
-         background: green;
+         background: white;
          text-decoration: none;
         }
 
 
-        a:nth-child(1){
-             color: green;
-                 }
+       
    
 
 
         @keyframes switch{
-            from{
-                left: 0;
-                color: red;
-            }
-                
-            to{
-                left: 300px;
-                color: purple;
-              
-            }
+             0% {
+    transform: translateX(0);
+    color: #e10a0a;
+  }
+  50% {
+    transform: translateX(500px);
+    color: #e2f60f;
+  }
+  100% {
+    transform: translateX(929px);
+    color: #193c02;
+  }
       
         }
 
-        h1{
-            width: auto;
-            height: 100%;
-            
-            animation: switch 3s linear infinite 1s;
-            position: relative;
+       h1 {
+  display: inline-block;
+  animation: switch 3s linear infinite alternate;
+}
 
-        }
+body {
+  overflow-x: hidden;
+}
 
 
-          @keyframes fadeIn {
-            from{
-                opacity: 0;
-                
-            }
-                
-            to{
-                opacity: 1;
-              
-            }
-      
-        }
-        
-.document{
-    opacity: 0;
-    animation: fadeIn 5s forwards infinite 2s;
+          @keyframes fadeInOut {
+  0%   { opacity: 0; }
+  50%  { opacity: 1; }
+  100% { opacity: 0; }
+}
 
+.document {
+  animation: fadeInOut 4s ease-in-out infinite;
 }
 
 .document{
@@ -327,10 +376,45 @@ h5{
 
 
 
+  .bottom a {
+  color: burlywood;
+}
+
+  .bottom a:hover {
+  color: white;
+}
+
+
+
+
+
+  .down a {
+  color: burlywood;
+}
+
+  .down a:hover {
+  color: white;
+}
+
+
+
+
+
 .footer{
     display: flex;
     justify-content: space-between;
     list-style: none;
     color: green;
+  
     
+}
+
+.footer a{
+  text-decoration: none;
+  color: green;
+}
+
+.footer a:hover{
+  
+  color: rgb(130, 130, 207);
 }

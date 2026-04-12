@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=keyboard_arrow_down" />
     <title>KILIMax</title>
 
@@ -13,17 +13,19 @@
 </head>
 
 <body>
+  <!-- NAVBAR -->
     <header>
         <nav class="menu">
             <ul class="menu-list">
-                <li> <a href="index.html">KILIMax</a></li>
-                <li><a href="products.html">Products</a></li>
+              <li> <img src="icon/log123.jpg" alt="" width="70px" height="40px"></li>
+              <li> <a href="index.html">KILIMax</a></li>
+              <li><a href="products.html">Products</a></li>
                 <li><a href="pricing.html">Pricing</a></li>
                <li><a href="aboutus.html">About Us</a></li>
                 <li> <a href="partners.html">Partners</a></li>
                 <li> <a href="customer.html">Customer</a></li>
                 <li>
-        <button class="bar"><a href="signin.html">Sign In</a> </button>
+        <button class="signin"><a href="signin.html">Sign In</a> </button>
                 </li>
                 <li>
         <button id="bar"><a href="getstarted.html">Get Started</a></button>
@@ -32,21 +34,23 @@
         </nav>
     </header>
 
+
+
     <main>
         <section>
-            <div style="display: flex;flex-direction: column;background-color: #E8F5F3;">
+            <div style="display: flex;flex-direction: column;background-color: #EDF9F6;">
                 <h1>The Only Software You Need For <br> Your Wholesale Business</h1>
-        <form action="" method="get" class="form"><button><a href="signin.html">Get a free Demo →</a></button>
+        <form action="" method="get" class="form"><button><a href="signin.html">Get a free Trial →</a></button>
                 </form>
 
-                <img src="icon/KILI.png" alt="">
+                <img id="one" src="icon/KILI.png" alt="">
             </div>
 
             <div class="img">
-        <img id="one" src="icon/image 2 .png" alt="" width="1249px">
-        <img id="two" src="icon/image 3.png" alt="" width="1249px">
+        <img id="two" src="icon/image 2 .png" alt="" >
+        <img id="three" src="icon/image 3.png" alt="" >
 
-                <img id="three" src="icon/img_12.png" alt="" width="1249">
+               
 
             </div>
 
@@ -272,17 +276,17 @@
 
     <footer>
       <h5>KiliMax</h5>
-      <div style="display: flex;background: rgb(3, 47, 3); color: white;">
-       
+      <div style="display: flex;background: #01241E; color: burlywood">
+        
         <p>KiliMax Software, Powering Businesses <br> Across Africa with AI</p>
-        <ul style="list-style: none;gap: 10px;">
+        <ul class="bottom" style="list-style: none;gap: 10px;">
           <li style="padding: 20px;">Explore</li>
           <li style="padding: 20px;"><a href="products.html">Products</a></li>
           <li style="padding: 20px;"><a href="pricing.html">Pricing</a></li>
           <li style="padding: 20px;"><a href="aboutus.html">About Us</a></li>
         </ul>
 
-        <ul style="list-style: none;gap: 10px;">
+        <ul class="down" style="list-style: none;gap: 10px;">
           <li style="padding: 20px 300px">Connect</li>
 
           <li style="padding: 20px 300px;"><a href="https://www.instagram.com/kilimax.software/" target="_blank" class="footer-social-link" onclick="sendKilimaxWebClick({element_name: 'Instagram',element_id:17,module_name: 'Footer',module_id: 10});">
@@ -306,19 +310,16 @@
                                     <span>LinkedIn</span>
                                 </a></a></li>
           
-          <div style="display: flex;justify-content: center;"> 
-            <li><button style="width: 120px;height: 40px;" class="bar"><a href="signin.html">Sign In</a> </button></li>
-          <li>
-        <button style="width: 120px;height: 40px;" class="bar"><a href="getstarted.html">Get Started</a> </button></li>
-      </div>
+         
          </ul>
       </div>
 
       <div>
         <ul class="footer">
           <li>Copyright  &copy; 2026 QUANTUM TECHNOLOGY HK LIMITED.All rights reserved. </li>
-          <li>Terms of Conditions</li>
-          <li>Privacy Policy</li>
+          <li><a href="terms.html">Terms of Conditions</a></li>
+          <li> <a href="policy.html">Privacy Policy</a></li>
+          
         </ul>
       </div>
 

@@ -7,43 +7,95 @@
     <title>KiliMax</title>
     <style>
 
-          .menu-list{
-    display: flex;
-    justify-content: space-around;
-    align-items: end;
-    list-style: none;
-    height: 70px;
-    padding-left: 10px;
-    background: blueviolet;
-    
-    
+
+
+
+
+body {
+  margin: 0;
+  padding-top: 70px;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  background: white;
+  z-index: 1000;
 }
 
 
 
-a{
-color: yellow !important;
+
+
+
+
+
+
+
+        .menu-list{
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+           list-style: none;
+           height: 100%;
+           margin: 0;
+           padding: 0 20px;
+}
+
+
+
+.menu-list a{
+color:black!important;
 text-decoration: none;
+
 }
 
-.bar{
-    border: 1px solid gray;
-    padding: 5px;
+.menu-list a:hover{
+    color: green !important;
+  }
+
+
+.signin{
+    border: 1px solid green;
+    padding: 10px;
     margin: 10px;
     border-radius: 1rem;
-    background-color: green;
-   
+    background-color: white;
+    
+  }
+.signin:hover{
+  background: #EDF9F6;
+  
+  
+  }
+.signin a{
+  color:black!important;
+text-decoration: none;
+
+
 }
+
+
+
   
 #bar{
-    border: 1px solid gray;
+    border: 1px solid green;
     padding: 15px;
     border-radius: 1rem;
-    background: green;
-   
-  
-   
-}
+    background:  white;
+    
+  }
+  #bar:hover{
+    
+     background: #EDF9F6;
+  }
+
+
+     
+
+
 
 
 .picture{
@@ -56,6 +108,29 @@ text-decoration: none;
 
 
 
+.bottom a {
+  color: burlywood;
+}
+
+  .bottom a:hover {
+  color: white;
+}
+
+
+
+
+
+  .down a {
+  color: burlywood;
+}
+
+  .down a:hover {
+  color: white;
+}
+
+
+
+
 
 .footer{
     display: flex;
@@ -64,6 +139,20 @@ text-decoration: none;
     color: green;
     
 }
+
+.footer a{
+  text-decoration: none;
+  color: green;
+}
+footer a:hover{
+  
+  color: rgb(130, 130, 207);
+}
+
+
+
+
+
     </style>
     
     
@@ -75,6 +164,7 @@ text-decoration: none;
     <header>
         <nav class="menu">
             <ul class="menu-list">
+                <li> <img src="icon/log123.jpg" alt="" width="70px" height="40px"></li>
                 <li> <a href="index.html">KILIMax</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="pricing.html">Pricing</a></li>
@@ -82,7 +172,7 @@ text-decoration: none;
                 <li> <a href="partners.html">Partners</a></li>
                 <li> <a href="customer.html">Customer</a></li>
                 <li>
-        <button class="bar"><a href="signin.html">Sign In</a> </button>
+        <button class="signin"><a href="signin.html">Sign In</a> </button>
                 </li>
                 <li>
         <button id="bar"><a href="getstarted.html">Get Started</a></button>
@@ -98,87 +188,62 @@ text-decoration: none;
 
      <div class="picture"> 
                 <div><img src="icon/customer 1.png" alt="" width="300px" height="310px" style="border-radius:1rem ;margin: 20px;">
-                    <h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Max Buy</h4>
+                    <h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color: green !important;">Max Buy</h4>
                     <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">MaxBuy Streamlines 40+ Stores with Kilimax</p>
-                    <p>One unified system cut through growing complexity, <br> boosting stock accuracy, staff control, and turnover within months.
-                   <br> <a style="color: green !important;" href="http://">Read Story →</a>
+                    <p>One unified system cut through growing complexity, <br> boosting stock accuracy, staff control, and turnover within months</p>
+                   <br> <a  style="color: green !important; text-decoration: none;" href="maxbuy.html">Read Story →</a>
                     </p>
             </div>
                 <div> <img src="icon/customer 2.jpg" alt="" width="300px" height="310px" style="border-radius:1rem ;margin: 20px;" >
-                    <h4>Toyar</h4>
-                    <p>Toyars's Breakthrough with Kilimax</p>
-                    <p>Digitizing manual processes delivered faster operations, <br> higher accuracy, and rapid growth- far sooner than expected.<br> <a style="color: green !important;" href="http://">Read Story →</a> <br>
+                    <h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color: green !important;">Toyar</h4>
+                    <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Toyars's Breakthrough with Kilimax</p>
+                    <p>Digitizing manual processes to deliver faster operations </p> 
+                    <p>Higher accuracy, and rapid growth- far sooner than expected.<br> <a style="color: green !important;text-decoration: none;" href="toya.html">Read Story →</a> <br>
                     </p>
                 </div>
 
                 <div> <img src="icon/final1.jpg" alt="" width="300px" height="310px" style="border-radius:1rem ;margin: 20px;" >
-                      <h4>Trucom</h4>
-                    <p>Trucom Powers Faster Retail with Kilimax</p>
-                    <p>By fixing slow reconciliation, stock gaps, and downtime, Trucom's Garden City shop moved to smoother and smarter retail.<br> <a style="color: green !important;" href="http://">Read Story →</a> <br>  </p>
-                </div>
+                      <h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color: green !important;">IKEN COMPUTERS LTD</h4>
+                    <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Iken Computers Kenya Scales <br> Operations with Kilimax ERP & POS</p>
+                    <p>Iken Computers, Kenya's leading Hikvision <br> distributor, streamlined inventory, sales, and <br> customer management with KiliMax ERP & POS <br> <a style="color: green !important;text-decoration: none;" href="iken.html">Read Story →</a> <br>  </p>
+                </div> 
             </div>
 
 
             <div class="picture"> 
                 <div><img src="icon/final2.jpg" alt="" width="300px" height="310px" style="border-radius:1rem ;margin: 20px;">
-                    <h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Max Buy</h4>
-                    <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">MaxBuy Streamlines 40+ Stores with Kilimax</p>
-                    <p>One unified system cut through growing complexity, <br> boosting stock accuracy, staff control, and turnover within months.
-                   <br> <a style="color: green !important;" href="http://">Read Story →</a>
+                    <h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color: green !important;">SPECTRUM PHONES LTD NIGERIA</h4>
+                    <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Spectrum Nigeria Scales Nationally <br>  with Kilimax ERP & POS</p>
+                    <p>Spectrum Nigeria grew from a single store to over <br> 60 locations nationawide. With KiliMax ERP, POS,<br> and AI-powered insights, Spectrum scaled.... 
+                   <br> <a style="color: green !important;text-decoration: none" href="spectrum.html">Read Story →</a>
                     </p>
             </div>
                 <div> <img src="icon/final3.jpg" alt="" width="300px" height="310px" style="border-radius:1rem ;margin: 20px;" >
-                    <h4>Toyar</h4>
-                    <p>Toyars's Breakthrough with Kilimax</p>
-                    <p>Digitizing manual processes delivered faster operations, <br> higher accuracy, and rapid growth- far sooner than expected.<br> <a style="color: green !important;" href="http://">Read Story →</a> <br>
+                    <h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color: green !important;">ANKE-HAIER HOME APPLIANCES LTD</h4>
+                    <p>Anke-Haier Kenya Powers Smarter <br> Home Appliances Operations with...</p>
+                    <p>nke-Haier Kenya's trusted Haier distributor, <br> implemented KiliMax ERP to centralize operations, <br> track inventory, and optimize order processing.<br> <a style="color: green !important;text-decoration: none" href="http://">Read Story →</a> <br>
                     </p>
                 </div>
 
                 <div> <img src="icon/final4.jpg" alt="" width="300px" height="310px" style="border-radius:1rem ;margin: 20px;" >
-                      <h4>Trucom</h4>
-                    <p>Trucom Powers Faster Retail with Kilimax</p>
-                    <p>By fixing slow reconciliation, stock gaps, and downtime, Trucom's Garden City shop moved to smoother and smarter retail.<br> <a style="color: green !important;" href="http://">Read Story →</a> <br>  </p>
+                      <h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color: green !important;">TAICO POWER KENYA</h4>
+                    <p>Taico Power Kenya Accelerates Growth <br> with Kilimax ERP & POS</p>
+                    <p>Taico Power Kenya, a leading renewable energy <br> company, implemented KilliMax ERP & POS to <br> automate sales, inventory, and multi-country...<br> <a style="color: green !important;text-decoration: none" href="http://">Read Story →</a> <br>  </p>
                 </div>
             </div>
-
-
-
-            <div class="picture"> 
-                <div><img src="icon/final5.jpg" alt="" width="300px" height="310px" style="border-radius:1rem ;margin: 20px;">
-                    <h4 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Max Buy</h4>
-                    <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">MaxBuy Streamlines 40+ Stores with Kilimax</p>
-                    <p>One unified system cut through growing complexity, <br> boosting stock accuracy, staff control, and turnover within months.
-                   <br> <a style="color: green !important;" href="http://">Read Story →</a>
-                    </p>
-            </div>
-                <div> <img src="icon/final6.jpg" alt="" width="300px" height="310px" style="border-radius:1rem ;margin: 20px;" >
-                    <h4>Toyar</h4>
-                    <p>Toyars's Breakthrough with Kilimax</p>
-                    <p>Digitizing manual processes delivered faster operations, <br> higher accuracy, and rapid growth- far sooner than expected.<br> <a style="color: green !important;" href="http://">Read Story →</a> <br>
-                    </p>
-                </div>
-
-                <div> <img src="icon/final7.jpg" alt="" width="300px" height="310px" style="border-radius:1rem ;margin: 20px;" >
-                      <h4>Trucom</h4>
-                    <p>Trucom Powers Faster Retail with Kilimax</p>
-                    <p>By fixing slow reconciliation, stock gaps, and downtime, Trucom's Garden City shop moved to smoother and smarter retail.<br> <a style="color: green !important;" href="http://">Read Story →</a> <br>  </p>
-                </div>
-            </div>
-
-
-                <footer>
-      <h5>KiliMax</h5>
-      <div style="display: flex;background: rgb(3, 47, 3); color: white;">
-       
+<footer>
+      <h5 style="font-size: 25px;">KiliMax</h5>
+      <div style="display: flex;background: #01241E; color: burlywood">
+        
         <p>KiliMax Software, Powering Businesses <br> Across Africa with AI</p>
-        <ul style="list-style: none;gap: 10px;">
+        <ul class="bottom" style="list-style: none;gap: 10px;">
           <li style="padding: 20px;">Explore</li>
           <li style="padding: 20px;"><a href="products.html">Products</a></li>
           <li style="padding: 20px;"><a href="pricing.html">Pricing</a></li>
           <li style="padding: 20px;"><a href="aboutus.html">About Us</a></li>
         </ul>
 
-        <ul style="list-style: none;gap: 10px;">
+        <ul class="down" style="list-style: none;gap: 10px;">
           <li style="padding: 20px 300px">Connect</li>
 
           <li style="padding: 20px 300px;"><a href="https://www.instagram.com/kilimax.software/" target="_blank" class="footer-social-link" onclick="sendKilimaxWebClick({element_name: 'Instagram',element_id:17,module_name: 'Footer',module_id: 10});">
@@ -202,25 +267,19 @@ text-decoration: none;
                                     <span>LinkedIn</span>
                                 </a></a></li>
           
-          <div style="display: flex;justify-content: center;"> 
-            <li><button style="width: 120px;height: 40px;" class="bar"><a href="signin.html">Sign In</a> </button></li>
-          <li>
-        <button style="width: 120px;height: 40px;" class="bar"><a href="getstarted.html">Get Started</a> </button></li>
-      </div>
+         
          </ul>
       </div>
 
       <div>
         <ul class="footer">
           <li>Copyright  &copy; 2026 QUANTUM TECHNOLOGY HK LIMITED.All rights reserved. </li>
-          <li>Terms of Conditions</li>
-          <li>Privacy Policy</li>
+           <li><a href="terms.html">Terms of Conditions</a></li>
+          <li> <a href="policy.html">Privacy Policy</a></li>
         </ul>
       </div>
 
     </footer>
-   
-    
 
 
 
