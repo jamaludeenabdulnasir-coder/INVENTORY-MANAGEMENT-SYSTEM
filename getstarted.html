@@ -1,151 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KiliMax</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KiliMax</title>
 
-       <style>
-        .menu-list{
-           display: flex;
-           justify-content: center;
-           gap: 20%;
-           list-style: none;
-        }
-
-        h1{
-            display: flex;
-            justify-content: center;
-            padding: 1px 17%;
-        }
-
-        .fill{
-            display: flex;
-            justify-content: center;
-            gap: 15%;
-            padding: 2px 15%;
-            list-style: none;
-
-        }
-
-        .form{
-            display: flex;
-            flex-direction: column;
-            padding: 10px;
-           
-        }
-
-      
-.submit{
-    display: flex;
-    justify-content: center;
-    width: 400px;
-    height:50px;
-    background: green;
-    color: white;
-    border-radius: 1rem;
-}
-
-input{
-    border-radius: 1rem;
-    width: 300px;
-    height:40px ;
-    &:hover{
-        border-color: red;
-        
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
-    
-}
-       
 
-      
-    </style>
+    body {
+      background: #f4f6f9;
+    }
 
+    nav {
+      background: white;
+      padding: 10px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .menu-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .menu-left a{
+        text-decoration: none;
+    }
+
+    .menu-left h2 {
+      font-size: 20px;
+    }
+
+    select {
+      padding: 5px;
+      border-radius: 6px;
+    }
+
+    .hero {
+      background: linear-gradient(to right, #4caf50, #2e7d32);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .hero h1 {
+      margin-bottom: 10px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      margin-top: -40px;
+      padding: 20px;
+    }
+
+    .form-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .form-group input {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      transition: 0.3s;
+    }
+
+    .form-group input:focus {
+      border-color: #4caf50;
+      outline: none;
+    }
+
+    .submit-btn {
+      margin-top: 20px;
+      width: 100%;
+      padding: 15px;
+      background: #4caf50;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: #388e3c;
+    }
+
+    @media (max-width: 768px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul class="menu-list">
-                <li>KiliMax</li>
-                 <li>
-                   <select>
-        <option selected>English</option>
-       <option>POrtugues</option>
+
+  <nav>
+    <ul class="menu-left">
+         <li> <a href="index.html"><img src="icon/log123.jpg" alt="" width="70px" height="40px"></a></li>
+         <li> <a href="index.html">KILIMax</a></li>
+      
+      
+    </ul>
+
+    <select>
+      <option>English</option>
+      <option>Portuguese</option>
     </select>
-                </li>
-            </ul>
-        </nav>
-    </header>
+  </nav>
 
-     <div style="background: yellowgreen;">
-        <div class="customer">
-          <h1 style="color: white;">Get Started</h1>
-          <p style="display: flex;justify-content: center;">Join KILIMax Partner Network Today</p>
+  <section class="hero">
+    <h1>Get Started</h1>
+    <p>Join KILIMax Partner Network Today</p>
+  </section>
 
-        <ul class="fill">
-           
-           
-            <li> <form action="" method="post" class="form">
-                    
-                    *Email<input type="text" placeholder="Please enter email">
-                </form>
-            <form action="" method="post" class="form">
-                    
-                    *Password<input type="text" placeholder="Password is required">
-                </form>
+  <div class="container">
+    <div class="form-card">
 
-                <form action="" method="post" class="form">
-                    
-                    *Verification Code<input type="text" placeholder="Please enter the Verification code">
-                </form>
-            
-            </li>
-               
-            
-            <li> <form action="" method="post" class="form">
-                    
-                    *Phone<input type="text" placeholder="Please enter phone number">
-                </form>
+      <form>
+        <div class="form-grid">
 
-            <form action="" method="post" class="form">
-                    
-                    *Password<input type="text" placeholder="Password is required">
-                </form>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="Enter your email" required>
+          </div>
 
-                <form action="" method="post" class="form">
-                    
-                    *Verification Code<input type="text" placeholder="Please enter the Verification code">
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="Enter phone number" required>
+          </div>
 
-                   
-                </form>
-             
-            </li>
-            
-        </ul>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" placeholder="Enter password" required>
+          </div>
 
-    
-    <div>
-        <form action="" method="post" style="display: flex;justify-content: center;">
-                  
+          <div class="form-group">
+            <label>Confirm Password</label>
+            <input type="password" placeholder="Confirm password" required>
+          </div>
 
-                    <input type="submit" class="submit">
-                </form> 
-    </div>
+          <div class="form-group">
+            <label>Verification Code</label>
+            <input type="text" placeholder="Enter code" required>
+          </div>
+
+        </div>
+
+        <button class="submit-btn">Create Account</button>
+      </form>
 
     </div>
-    </div>
-
-   
-  
-
-   
-    
+  </div>
 
 </body>
 </html>
-    
-    
-      
-
-    

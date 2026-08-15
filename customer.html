@@ -96,14 +96,16 @@ text-decoration: none;
      
 
 
+img {
+  max-width: 100%;
+  height: auto;
+}
 
-
-.picture{
-    display: flex;
-    justify-content: center;
-    justify-content: space-around;
-    background: #E8F5F3;
-
+.picture {
+  display: flex;
+  flex-wrap: wrap;   /* 🔥 important */
+  justify-content: center;
+  gap: 20px;
 }
 
 
@@ -117,7 +119,9 @@ text-decoration: none;
 }
 
 
-
+.down li {
+  padding: 10px 20px;
+}
 
 
   .down a {
@@ -164,7 +168,7 @@ footer a:hover{
     <header>
         <nav class="menu">
             <ul class="menu-list">
-                <li> <img src="icon/log123.jpg" alt="" width="70px" height="40px"></li>
+                 <li> <a href="index.html"><img src="icon/log123.jpg" alt="" width="70px" height="40px"></a></li>
                 <li> <a href="index.html">KILIMax</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="pricing.html">Pricing</a></li>
@@ -182,7 +186,7 @@ footer a:hover{
     </header>
 
     <div>
-        <img src="icon/final.png" alt="" width="1400px">
+        <img src="icon/final.png" alt="" >
        
     </div>
 
@@ -232,8 +236,8 @@ footer a:hover{
                 </div>
             </div>
 <footer>
-      <h5 style="font-size: 25px;">KiliMax</h5>
-      <div style="display: flex;background: #01241E; color: burlywood">
+      <h5 style="font-size: 25px;"> <li> <a style="text-decoration: none;" href="index.html">KILIMax</a></li></h5>
+      <div style="display: flex;justify-content: center;background: #01241E; color: burlywood">
         
         <p>KiliMax Software, Powering Businesses <br> Across Africa with AI</p>
         <ul class="bottom" style="list-style: none;gap: 10px;">
@@ -244,7 +248,7 @@ footer a:hover{
         </ul>
 
         <ul class="down" style="list-style: none;gap: 10px;">
-          <li style="padding: 20px 300px">Connect</li>
+          <li>Connect</li>
 
           <li style="padding: 20px 300px;"><a href="https://www.instagram.com/kilimax.software/" target="_blank" class="footer-social-link" onclick="sendKilimaxWebClick({element_name: 'Instagram',element_id:17,module_name: 'Footer',module_id: 10});">
           <svg class="footer-social-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
