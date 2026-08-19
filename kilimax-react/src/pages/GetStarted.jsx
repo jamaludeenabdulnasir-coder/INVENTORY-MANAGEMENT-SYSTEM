@@ -1,5 +1,6 @@
 import { useState, useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
+import { api } from "../lib/api";
 
 const STEPS = ["Account Info", "Security", "Verification"];
 
@@ -66,6 +67,8 @@ export default function GetStarted() {
 
   const [touched, setTouched] = useState({});
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState("");
 
   const handleChange = useCallback((e) => {
     const { name, value, type, checked } = e.target;
@@ -124,16 +127,30 @@ export default function GetStarted() {
   }, []);
 
   const handleSubmit = useCallback(
-    (e) => {
+    async (e) => {
       e.preventDefault();
       if (!validateStep(step)) return;
       if (!form.agree) {
         setErrors((prev) => ({ ...prev, agree: "You must agree to the terms" }));
         return;
       }
-      setSubmitted(true);
+      setLoading(true);
+      setServerError("");
+      try {
+        await api.signup({
+          name: form.email.split("@")[0],
+          email: form.email,
+          phone: form.phone,
+          password: form.password,
+        });
+        setSubmitted(true);
+      } catch (err) {
+        setServerError(err.message);
+      } finally {
+        setLoading(false);
+      }
     },
-    [step, form.agree, validateStep]
+    [step, form, validateStep]
   );
 
   const strength = useMemo(() => passwordStrength(form.password), [form.password]);
@@ -374,6 +391,7 @@ export default function GetStarted() {
               </div>
 
               {/* BUTTONS */}
+              {serverError && <span className="gs-error" style={{ marginBottom: 12, display: "block" }}>{serverError}</span>}
               <div className="gs-btn-row">
                 {step > 0 && (
                   <button type="button" className="gs-btn-back" onClick={goBack}>
@@ -385,8 +403,8 @@ export default function GetStarted() {
                     Continue →
                   </button>
                 ) : (
-                  <button type="submit" className="gs-btn-primary">
-                    Create Account →
+                  <button type="submit" className="gs-btn-primary" disabled={loading}>
+                    {loading ? "Creating Account..." : "Create Account →"}
                   </button>
                 )}
               </div>

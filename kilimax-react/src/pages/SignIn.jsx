@@ -1,12 +1,16 @@
 import { useState, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { api } from "../lib/api";
 
 export default function SignIn() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({ email: "", password: "" });
   const [touched, setTouched] = useState({});
   const [errors, setErrors] = useState({});
   const [showPw, setShowPw] = useState(false);
   const [remember, setRemember] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState("");
 
   const handleChange = useCallback((e) => {
     const { name, value } = e.target;

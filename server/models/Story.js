@@ -15,7 +15,6 @@ const storySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-storySchema.index({ slug: 1 });
 storySchema.index({ featured: 1 });
 
 export default mongoose.model("Story", storySchema);
