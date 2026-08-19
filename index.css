@@ -735,6 +735,7 @@ nav .hamburger {
   height: 200%;
   background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
   animation: rotate 30s linear infinite;
+  pointer-events: none;
 }
 
 @keyframes rotate {
@@ -762,8 +763,8 @@ nav .hamburger {
   margin-right: auto;
 }
 
-.hero-section .form button {
-  background: #4CAF50;
+.hero-section .form.hero-btn {
+  background: #FF6B35;
   border: none;
   padding: 16px 40px;
   font-size: 18px;
@@ -772,18 +773,16 @@ nav .hamburger {
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
-}
-
-.hero-section .form button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5);
-  background: #45a049;
-}
-
-.hero-section .form a {
-  color: white !important;
+  box-shadow: 0 4px 20px rgba(255, 107, 53, 0.6);
+  display: inline-block;
   text-decoration: none;
+}
+
+.hero-section .form.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255, 107, 53, 0.8);
+  background: #e55a2b;
+  color: white;
 }
 
 #one {

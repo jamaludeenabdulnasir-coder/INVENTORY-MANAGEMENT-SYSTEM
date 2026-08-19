@@ -157,41 +157,8 @@ nav.scrolled {
   background: linear-gradient(135deg, #0cbf8b 0%, #01382c 100%);
 }
 
-@keyframes switch {
-  0% {
-    transform: translateX(0);
-    color: #e10a0a;
-  }
-  50% {
-    transform: translateX(500px);
-    color: #e2f60f;
-  }
-  100% {
-    transform: translateX(929px);
-    color: #193c02;
-  }
-}
-
 h1 {
-  display: inline-block;
-  animation: switch 3s linear infinite alternate;
-}
-
-.form a {
   color: black;
-  text-decoration: none;
-}
-
-.form a:hover {
-  color: green;
-  background: #EDF9F6;
-}
-
-h1 {
-  display: flex;
-  justify-content: center;
-  color: black;
-  height: 100%;
 }
 
 #one {
@@ -215,41 +182,13 @@ h1 {
   display: block;
 }
 
-@keyframes fadeInOut {
-  0%   { opacity: 0; }
-  50%  { opacity: 1; }
-  100% { opacity: 0; }
-}
-
 .document {
-  animation: fadeInOut 60s ease-in-out infinite;
   list-style: disc;
-}
-
-button {
-  display: flex;
-  justify-self: center;
-  border-radius: 1rem;
-  padding: 15px;
-  background: white;
-  text-decoration: none;
-}
-
-.image {
-  display: flex;
-  justify-content: space-around;
-  background: #E8F5F3;
 }
 
 h3 {
   display: flex;
   justify-content: center;
-}
-
-.picture {
-  display: flex;
-  justify-content: space-around;
-  background: #E8F5F3;
 }
 
 .dropdown-header,
@@ -541,22 +480,26 @@ nav .hamburger {
     padding: 10px;
   }
 
-  .image {
+  .hero-subtitle {
+    font-size: 15px;
+  }
+
+  .ai-features-grid {
     flex-direction: column;
     align-items: center;
   }
 
-  .image div {
+  .ai-features-grid > div {
     width: 100%;
     max-width: 350px;
   }
 
-  .picture {
+  .stories-grid {
     flex-direction: column;
     align-items: center;
   }
 
-  .picture div {
+  .stories-grid > div {
     width: 100%;
     max-width: 350px;
   }
@@ -572,6 +515,16 @@ nav .hamburger {
 
   .form button {
     margin: 0 auto;
+  }
+
+  .img-row-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .img-row-section img {
+    max-width: 100%;
   }
 
   #one, #two, #three {
@@ -621,6 +574,7 @@ nav .hamburger {
   height: 200%;
   background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
   animation: rotate 30s linear infinite;
+  pointer-events: none;
 }
 
 @keyframes rotate {
@@ -633,43 +587,47 @@ nav .hamburger {
   color: white;
   font-size: clamp(28px, 5vw, 52px);
   font-weight: 800;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   position: relative;
-  animation: none;
   line-height: 1.2;
-}
-
-.hero-section p {
-  color: rgba(255,255,255,0.85);
-  font-size: clamp(16px, 2.5vw, 20px);
-  margin-bottom: 30px;
-  max-width: 700px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.hero-section .form button {
-  background: #4CAF50;
+.hero-subtitle {
+  color: rgba(255,255,255,0.8);
+  font-size: clamp(16px, 2.5vw, 20px);
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.hero-section .form.hero-btn,
+.hero-btn {
+  background: linear-gradient(135deg, #FF6B35 0%, #ff4500 100%);
   border: none;
-  padding: 16px 40px;
+  padding: 16px 44px;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
   color: white;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
-}
-
-.hero-section .form button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.5);
-  background: #45a049;
-}
-
-.hero-section .form a {
-  color: white !important;
+  box-shadow: 0 6px 25px rgba(255, 107, 53, 0.5);
+  display: inline-block;
   text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.hero-section .form.hero-btn:hover,
+.hero-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 35px rgba(255, 107, 53, 0.7);
+  background: linear-gradient(135deg, #e55a2b 0%, #e03e00 100%);
+  color: white;
 }
 
 #one {
@@ -687,6 +645,27 @@ nav .hamburger {
   gap: 30px;
   padding: 40px 20px;
   background: linear-gradient(180deg, #EDF9F6 0%, white 100%);
+}
+
+.img-row-section {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 50px 20px;
+  background: linear-gradient(180deg, #EDF9F6 0%, white 100%);
+}
+
+.img-row-section img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease;
+}
+
+.img-row-section img:hover {
+  transform: translateY(-5px);
 }
 
 #two, #three {
@@ -789,7 +768,7 @@ nav .hamburger {
 
 /* ==================== AI FEATURES GRID ==================== */
 .ai-features-section {
-  padding: 60px 20px;
+  padding: 70px 20px;
   background: linear-gradient(135deg, #01241E 0%, #024a35 100%);
 }
 
@@ -810,55 +789,64 @@ nav .hamburger {
   color: #01241E;
 }
 
-.image {
+.ai-features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
-  background: transparent;
 }
 
-.image > div {
+.ai-feature-card {
   background: rgba(255,255,255,0.1);
   border-radius: 16px;
-  padding: 25px;
+  padding: 30px 25px;
   text-align: center;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
 }
 
-.image > div:hover {
+.ai-feature-card:hover {
   transform: translateY(-8px);
   background: rgba(255,255,255,0.15);
 }
 
-.image > div img {
+.ai-feature-card img {
   width: 100%;
   height: auto;
   border-radius: 12px;
   margin-bottom: 20px;
 }
 
-.image h4 {
+.ai-feature-card h4 {
   color: white;
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 12px;
 }
 
-.image p {
+.ai-feature-card p {
   color: rgba(255,255,255,0.8);
   font-size: 14px;
   line-height: 1.6;
 }
 
-.ai-features-section.light .image h4 {
+.ai-features-section.light .ai-feature-card {
+  background: white;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+}
+
+.ai-features-section.light .ai-feature-card:hover {
+  background: white;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+}
+
+.ai-features-section.light .ai-feature-card h4 {
   color: #01241E;
 }
 
-.ai-features-section.light .image p {
+.ai-features-section.light .ai-feature-card p {
   color: #555;
 }
 
@@ -866,24 +854,27 @@ nav .hamburger {
 .stories-section {
   padding: 80px 20px;
   background: linear-gradient(180deg, #f8faf9 0%, #EDF9F6 100%);
+  text-align: center;
+}
+
+.section-badge {
+  display: inline-block;
+  background: rgba(10, 168, 118, 0.1);
+  color: #0aa876;
+  padding: 6px 18px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 15px;
 }
 
 .stories-section h3 {
   display: block;
   text-align: center;
   color: #01241E;
-  font-size: clamp(20px, 3vw, 28px);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
-}
-
-.stories-section .stories-title {
-  display: block;
-  text-align: center;
-  font-size: clamp(28px, 5vw, 48px);
-  color: #01241E;
+  font-size: clamp(24px, 4vw, 40px);
   font-weight: 800;
   margin-bottom: 15px;
 }
@@ -894,12 +885,12 @@ nav .hamburger {
   color: #666;
   font-size: 16px;
   max-width: 600px;
-  margin: 0 auto 10px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
 }
 
-.stories-section > button {
-  display: block;
-  margin: 30px auto;
+.btn-primary {
+  display: inline-block;
   background: #01241E;
   color: white;
   border: none;
@@ -909,73 +900,77 @@ nav .hamburger {
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-}
-
-.stories-section > button:hover {
-  background: #024a35;
-  transform: scale(1.05);
-}
-
-.stories-section > button a {
-  color: white !important;
   text-decoration: none;
 }
 
-.picture {
+.btn-primary:hover {
+  background: #024a35;
+  transform: scale(1.05);
+  color: white;
+}
+
+.stories-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
   padding: 40px 20px;
   max-width: 1200px;
   margin: 0 auto;
-  background: transparent;
 }
 
-.picture > div {
+.story-card {
   background: white;
   border-radius: 16px;
-  padding: 25px;
+  padding: 30px;
   text-align: center;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
   transition: all 0.3s ease;
 }
 
-.picture > div:hover {
+.story-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 50px rgba(0,0,0,0.12);
 }
 
-.picture img {
+.story-card img {
   width: 100%;
   height: auto;
   border-radius: 12px;
   margin-bottom: 20px;
 }
 
-.picture h4 {
-  color: #01241E;
+.story-card h4 {
+  color: #0aa876;
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 10px;
 }
 
-.picture p {
-  color: #666;
-  font-size: 14px;
-  line-height: 1.6;
+.story-card .story-title {
+  color: #01241E;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
   margin-bottom: 10px;
 }
 
-.picture p a,
-.picture .read-story {
-  color: #4CAF50 !important;
-  text-decoration: none;
-  font-weight: 600;
+.story-card .story-text {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 15px;
 }
 
-.picture p a:hover,
-.picture .read-story:hover {
-  text-decoration: underline;
+.story-card .read-story {
+  color: #0aa876 !important;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.story-card .read-story:hover {
+  color: #01241E !important;
+  text-decoration: none;
 }
 
 /* ==================== STATS BANNER ==================== */
@@ -984,15 +979,30 @@ nav .hamburger {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  padding: 40px 20px;
-  background: #01241E;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #01241E 0%, #024a35 100%);
 }
 
 .stats-banner img {
   width: 100%;
-  max-width: 400px;
+  max-width: 380px;
   height: auto;
-  border-radius: 10px;
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.stats-banner img:hover {
+  transform: scale(1.03);
+}
+
+.footer-banner {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.footer-banner img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* ==================== FAQ SECTION ==================== */
@@ -1383,7 +1393,6 @@ h6 {
 .form-card h1 {
   text-align: center;
   margin-bottom: 10px;
-  animation: none;
   color: #333;
 }
 
@@ -1465,7 +1474,6 @@ h6 {
 
 .hero h1 {
   margin-bottom: 10px;
-  animation: none;
   color: white;
 }
 

@@ -47,13 +47,13 @@ const stories = [
 function FeatureCard({ title, items, img }) {
   return (
     <div className="feature-card">
-      <h4 className="document">{title}</h4>
-      <ul className="document">
+      <h4>{title}</h4>
+      <ul>
         {items.map((item, i) => (
           <li key={i}>{item}</li>
         ))}
       </ul>
-      <img src={img} alt="" />
+      <img src={img} alt={title} />
     </div>
   );
 }
@@ -62,10 +62,10 @@ function AiFeatureRow({ images, light }) {
   return (
     <div className={`ai-features-section ${light ? "light" : ""}`}>
       <h3>AI Bot Features</h3>
-      <div className="image">
+      <div className="ai-features-grid">
         {images.map((img, i) => (
-          <div key={i}>
-            <img src={img} alt="" />
+          <div key={i} className="ai-feature-card">
+            <img src={img} alt="AI Bot" />
             <h4>AI Bot</h4>
             <p>
               Kilimax AI offers automatic detection and autofill of item details such as brand
@@ -82,25 +82,21 @@ function AiFeatureRow({ images, light }) {
 function StoriesSection() {
   return (
     <div className="stories-section">
-      <h3>Customer Stories</h3>
-      <p className="stories-title">Customer Stories</p>
+      <span className="section-badge">Customer Stories</span>
+      <h3>See How Businesses Thrive with Kilimax</h3>
       <p className="stories-sub">
         See how businesses across Africa are transforming operations with Kilimax - streamlining
-        workflows, gaining visibility, and unlocking growth
+        workflows, gaining visibility, and unlocking growth through smarter, connected systems.
       </p>
-      <p className="stories-sub">through smarter, connected systems.</p>
-      <button>
-        <Link to="/customer">See all Stories</Link>
-      </button>
+      <Link to="/customer" className="btn-primary">See all Stories</Link>
 
-      <div className="picture">
+      <div className="stories-grid">
         {stories.map((s, i) => (
-          <div key={i}>
-            <img src={s.img} alt="" width="300" height="310" />
-            <h4 className="highlight-green">{s.name}</h4>
-            <p>{s.title}</p>
-            <p>{s.text}</p>
-            <br />
+          <div key={i} className="story-card">
+            <img src={s.img} alt={s.name} />
+            <h4>{s.name}</h4>
+            <p className="story-title">{s.title}</p>
+            <p className="story-text">{s.text}</p>
             <Link className="read-story" to={s.to}>
               Read Story →
             </Link>
@@ -114,170 +110,63 @@ function StoriesSection() {
 export default function Home() {
   return (
     <main>
-      <section>
-        {/* HERO SECTION */}
-        <div className="hero-section">
-          <h1>The Only Software You Need For Your Wholesale Business</h1>
+      {/* HERO SECTION */}
+      <section className="hero-section">
+        <h1>The Only Software You Need For Your Wholesale Business</h1>
+        <p className="hero-subtitle">
+          Streamline inventory, boost sales, and grow your business with one powerful platform
+        </p>
+        <Link to="/signin" className="hero-btn">
+          Get a free Trial →
+        </Link>
+        <img id="one" src="icon/KILI.png" alt="Kilimax Dashboard" />
+      </section>
 
-          <form action="" method="get" className="form">
-            <button>
-              <Link to="/signin">Get a free Trial →</Link>
-            </button>
-          </form>
+      {/* SCREENSHOTS */}
+      <section className="img-row-section">
+        <img id="two" src="icon/image 2 .png" alt="" />
+        <img id="three" src="icon/image 3.png" alt="" />
+      </section>
 
-          <img id="one" src="icon/KILI.png" alt="" />
-        </div>
+      {/* AI PARTNER SECTION */}
+      <section className="ai-partner-section">
+        <h3>KILLI - Your AI Business Partner</h3>
+        <p>
+          Kily, the AI in KilliMax, speaks your business language from WhatsApp orders to cash
+          flow alerts, working quietly in the background so you can focus on selling.
+        </p>
+      </section>
 
-        <div className="img">
-          <img id="two" src="icon/image 2 .png" alt="" />
-          <img id="three" src="icon/image 3.png" alt="" />
-        </div>
+      {/* FEATURE CARDS */}
+      <section className="feature-section">
+        <FeatureCard title="BOOST" items={boostFeatures} img="icon/phone1.png" />
+        <FeatureCard
+          title="Insights"
+          items={insightFeatures}
+          img="icon/Screenshot 2026-03-12 141549.png"
+        />
+      </section>
 
-        {/* AI PARTNER SECTION */}
-        <div className="ai-partner-section">
-          <h3>KILLI - Your AI Business Partner</h3>
-          <p>
-            Kily, the AI in KilliMax, speaks your business language from WhatsApp orders to cash
-            flow alerts, working quietly in the background so you can focus on selling.
-          </p>
-        </div>
+      {/* AI FEATURES GRID */}
+      <AiFeatureRow images={aiRows[0]} />
+      <AiFeatureRow images={aiRows[1]} light />
 
-        {/* FEATURE CARDS */}
-        <div className="feature-section">
-          <FeatureCard title="BOOST" items={boostFeatures} img="icon/phone1.png" />
-          <FeatureCard
-            title="Insights"
-            items={insightFeatures}
-            img="icon/Screenshot 2026-03-12 141549.png"
-          />
-        </div>
+      {/* CUSTOMER STORIES */}
+      <StoriesSection />
 
-        {/* AI FEATURES GRID */}
-        <AiFeatureRow images={aiRows[0]} />
-        <AiFeatureRow images={aiRows[1]} light />
+      {/* STATS BANNER */}
+      <section className="stats-banner">
+        <img src="icon/picture1.png" alt="" />
+        <img src="icon/picture2.png" alt="" />
+        <img src="icon/picture3.png" alt="" />
+      </section>
 
-        {/* CUSTOMER STORIES */}
-        <StoriesSection />
+      {/* FAQ SECTION */}
+      <FaqSection />
 
-        {/* STATS BANNER */}
-        <div className="stats-banner">
-          <img src="icon/picture1.png" alt="" />
-          <img src="icon/picture2.png" alt="" />
-          <img src="icon/picture3.png" alt="" />
-        </div>
-
-        {/* FAQ SECTION */}
-        <FaqSection />
-
-        <div>
-          <img
-            style={{ padding: "200px 50px", maxWidth: "100%", height: "auto" }}
-            src="icon/footer.png"
-            alt=""
-          />
-        </div>
-
-        <div className="img">
-          <img id="two" src="icon/image 2 .png" alt="" />
-          <img id="three" src="icon/image 3.png" alt="" />
-        </div>
-
-        {/* 2ND ANIMATION */}
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "20px" }}>
-          <h3>KILLI - Your AI Business Partner</h3>
-          <p style={{ flexDirection: "column" }}>
-            Kily, the AI in KilliMax, speaks your business language from WhatsApp orders to cash
-            flow <br /> alerts, working quietly in the background so you can focus on selling.
-          </p>
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            border: "1px solid gray",
-            margin: "30px 10px 30px",
-            fontSize: "20px",
-            background: "#E8F5F3",
-            flexWrap: "wrap",
-            padding: "20px",
-          }}
-        >
-          <div style={{ flex: 1, minWidth: "280px" }}>
-            <h4 className="document">BOOST</h4>
-            <ul className="document">
-              Sell faster with less effort
-              {boostFeatures.map((f, i) => (
-                <li key={i} style={{ padding: "20px" }}>
-                  {f}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <img style={{ margin: "auto", maxWidth: "300px" }} src="icon/phone1.png" alt="" />
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            padding: "30px",
-            border: "1px solid gray",
-            margin: "30px 10px 30px",
-            fontSize: "20px",
-            background: "#E8F5F3",
-            flexWrap: "wrap",
-          }}
-        >
-          <div style={{ flex: 1, minWidth: "280px" }}>
-            <h4 className="document">Insights</h4>
-            <ul className="document">
-              Know your problems before they hit your business
-              {insightFeatures.map((f, i) => (
-                <li key={i} style={{ padding: "20px" }}>
-                  {f}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <img
-            style={{ margin: "auto", maxWidth: "300px" }}
-            src="icon/Screenshot 2026-03-12 141549.png"
-            alt=""
-          />
-        </div>
-
-        <AiFeatureRow images={aiRows[0]} light />
-        <AiFeatureRow images={aiRows[1]} />
-
-        <div>
-          <h3>Blogs</h3>
-          <p style={{ display: "flex", justifyContent: "center", fontSize: "50px", textAlign: "center" }}>
-            Customer Stories
-          </p>
-          <p style={{ display: "flex", justifyContent: "center", textAlign: "center" }}>
-            See how businesses across Africa are transforming operations with Kilimax - streamlining
-            workflows, gaining visibility, and unlocking growth
-          </p>
-          <p style={{ display: "flex", justifyContent: "center", textAlign: "center" }}>
-            through smarter, connected systems.
-          </p>
-          <StoriesSection />
-
-          <div style={{ paddingTop: "100px", textAlign: "center" }}>
-            <img src="icon/picture1.png" alt="" style={{ maxWidth: "100%" }} />
-            <img src="icon/picture2.png" alt="" style={{ paddingTop: "100px", maxWidth: "100%" }} />
-            <img src="icon/picture3.png" alt="" style={{ maxWidth: "100%" }} />
-          </div>
-
-          <FaqSection />
-        </div>
-
-        <div>
-          <img
-            style={{ padding: "200px 50px", maxWidth: "100%", height: "auto" }}
-            src="icon/footer.png"
-            alt=""
-          />
-        </div>
+      {/* FOOTER BANNER */}
+      <section className="footer-banner">
+        <img src="icon/footer.png" alt="Kilimax" />
       </section>
     </main>
   );
