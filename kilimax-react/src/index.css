@@ -1191,7 +1191,7 @@ footer {
   background: linear-gradient(135deg, #01241E 0%, #01382c 50%, #024a35 100%);
   color: white;
   margin-top: auto;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* CTA Band */
@@ -1200,6 +1200,7 @@ footer {
   padding: 60px 20px;
   background: linear-gradient(135deg, #0aa876 0%, #01241E 100%);
   position: relative;
+  overflow: hidden;
 }
 
 .footer-cta::before {
@@ -1211,6 +1212,7 @@ footer {
   height: 400px;
   background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
   border-radius: 50%;
+  pointer-events: none;
 }
 
 .footer-cta::after {
@@ -1222,6 +1224,7 @@ footer {
   height: 300px;
   background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
   border-radius: 50%;
+  pointer-events: none;
 }
 
 .footer-cta h2 {
@@ -1268,6 +1271,8 @@ footer {
   padding: 60px 40px 40px;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .footer-brand {
