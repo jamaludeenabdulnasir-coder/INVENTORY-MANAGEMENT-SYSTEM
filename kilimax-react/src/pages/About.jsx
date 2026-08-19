@@ -1,73 +1,90 @@
 export default function About() {
   return (
     <main>
-      <div className="hero-img-banner">
-        <img src="icon/abu.png" alt="" />
-      </div>
+      {/* HERO */}
+      <section className="about-hero">
+        <span className="section-badge light">About Us</span>
+        <h1>Empowering African Businesses with Smart Software</h1>
+        <p>
+          We're on a mission to make powerful business tools accessible to every African enterprise
+        </p>
+        <img src="icon/abu.png" alt="Kilimax Team" />
+      </section>
 
-      <div style={{ display: "flex", flexWrap: "wrap", padding: "60px", background: "purple", color: "white", alignItems: "center", justifyContent: "center", gap: "40px" }}>
-        <img src="icon/abu1.jpg" alt="" width="500" height="400" style={{ maxWidth: "100%" }} />
-
-        <div style={{ flex: "1 1 400px", maxWidth: "700px" }}>
-          <h6 style={{ fontSize: "40px" }}>Who We Are</h6>
-          <p style={{ fontSize: "20px", margin: "15px 0" }}>
-            Kilimax is a proudly African technology company, <br /> headquartered in Kenya with a
-            growing presence across <br /> the continent - including offices in Nigeria, Tanzania,{" "}
-            <br /> Angola, and more.
-          </p>
-          <p style={{ fontSize: "18px" }}>
-            We're on a mission to empower African businesses with <br /> smart, accessible software
-            solutions. Our flagship product, an all-in-one ERP system, is designed to be <br />{" "}
-            simple, powerful, and tailored to the unique needs of <br /> African markets.
-          </p>
+      {/* WHO WE ARE */}
+      <section className="about-split">
+        <div className="about-split-img">
+          <img src="icon/abu1.jpg" alt="Kilimax Office" />
         </div>
-      </div>
-
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", background: "purple", color: "#E8F5F3", padding: "40px 20px" }}>
-        <img src="icon/paste12.png" alt="" width="200" />
-        <h6 style={{ fontSize: "40px" }}>Industries We Serve</h6>
-      </div>
-
-      <div style={{ display: "flex", justifyContent: "space-between", background: "white", flexWrap: "wrap" }}>
-        <div style={{ margin: "0 auto" }}>
-          <img style={{ padding: "30px", maxWidth: "100%" }} src="icon/pix.png" alt="" width="500" />
-          <img style={{ padding: "30px", maxWidth: "100%" }} src="icon/pix1.png" alt="" width="500" />
-        </div>
-
-        <div style={{ margin: "0 auto" }}>
-          <img style={{ padding: "30px", maxWidth: "100%" }} src="icon/pix2.png" alt="" width="500" />
-          <img style={{ padding: "30px", maxWidth: "100%" }} src="icon/pix3.png" alt="" width="500" />
-        </div>
-      </div>
-
-      <div style={{ display: "flex", flexWrap: "wrap", background: "purple", color: "white", alignItems: "center", padding: "40px 20px" }}>
-        <div style={{ flex: "1 1 350px", paddingLeft: "100px" }}>
-          <h6 style={{ fontSize: "30px" }}>Built Around You</h6>
-          <p style={{ fontSize: "18px", margin: "15px 0" }}>
-            At KiliMax, our customers are more than just users they are our <br /> partners in
-            progress
+        <div className="about-split-content">
+          <span className="section-badge">Our Story</span>
+          <h2>Who We Are</h2>
+          <p>
+            Kilimax is a proudly African technology company, headquartered in Kenya with a
+            growing presence across the continent — including offices in Nigeria, Tanzania,
+            Angola, and more.
           </p>
-          <p style={{ fontSize: "18px" }}>
-            Every challenge you face shapes the solutions we build, and <br /> your growth is a
-            measure of our success. We're here to <br /> listen, adapt, and grow with you every step
-            of the way.
+          <p>
+            We're on a mission to empower African businesses with smart, accessible software
+            solutions. Our flagship product, an all-in-one ERP system, is designed to be
+            simple, powerful, and tailored to the unique needs of African markets.
           </p>
         </div>
+      </section>
 
-        <div style={{ flex: "0 0 auto", textAlign: "center" }}>
-          <img src="icon/pix6.png" alt="" width="250" height="410" />
+      {/* INDUSTRIES */}
+      <section className="about-industries">
+        <span className="section-badge light">What We Do</span>
+        <h2>Industries We Serve</h2>
+        <div className="industries-grid">
+          <div className="industry-card">
+            <img src="icon/pix.png" alt="Retail" />
+            <h4>Retail</h4>
+          </div>
+          <div className="industry-card">
+            <img src="icon/pix1.png" alt="Wholesale" />
+            <h4>Wholesale</h4>
+          </div>
+          <div className="industry-card">
+            <img src="icon/pix2.png" alt="Distribution" />
+            <h4>Distribution</h4>
+          </div>
+          <div className="industry-card">
+            <img src="icon/pix3.png" alt="Manufacturing" />
+            <h4>Manufacturing</h4>
+          </div>
         </div>
+      </section>
 
-        <div style={{ flex: "1 1 300px", textAlign: "center" }}>
-          <img src="icon/pix4.png" alt="" />
-          <br />
-          <img style={{ paddingTop: "30px" }} src="icon/pix5.png" alt="" />
+      {/* BUILT AROUND YOU */}
+      <section className="about-built">
+        <div className="about-built-text">
+          <span className="section-badge">Our Promise</span>
+          <h2>Built Around You</h2>
+          <p>
+            At KiliMax, our customers are more than just users — they are our partners in progress.
+            Every challenge you face shapes the solutions we build, and your growth is a measure
+            of our success.
+          </p>
+          <p>
+            We're here to listen, adapt, and grow with you every step of the way.
+          </p>
         </div>
-      </div>
+        <div className="about-built-images">
+          <div className="about-built-col">
+            <img src="icon/pix6.png" alt="" />
+          </div>
+          <div className="about-built-col">
+            <img src="icon/pix4.png" alt="" />
+            <img src="icon/pix5.png" alt="" />
+          </div>
+        </div>
+      </section>
 
-      <div style={{ textAlign: "center" }}>
-        <img style={{ padding: "200px 50px", maxWidth: "100%" }} src="icon/footer.png" alt="" />
-      </div>
+      {/* FOOTER BANNER */}
+      <section className="footer-banner">
+        <img src="icon/footer.png" alt="Kilimax" />
+      </section>
     </main>
   );
 }

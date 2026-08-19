@@ -23,61 +23,90 @@ const socials = [
   },
 ];
 
+const footerLinks = [
+  { label: "Products", to: "/products" },
+  { label: "Pricing", to: "/pricing" },
+  { label: "About Us", to: "/about" },
+  { label: "Partners", to: "/partners" },
+  { label: "Customer Stories", to: "/customer" },
+];
+
+const legalLinks = [
+  { label: "Terms of Use", to: "/terms" },
+  { label: "Privacy Policy", to: "/policy" },
+];
+
 export default function Footer() {
   return (
     <footer>
-      <h5>
-        <Link to="/" style={{ textDecoration: "none" }}>
-          KILIMax
-        </Link>
-      </h5>
-      <div>
-        <p>
-          KiliMax Software, Powering Businesses <br /> Across Africa with AI
-        </p>
-        <ul className="bottom">
-          <li>Explore</li>
-          <li>
-            <Link to="/products">Products</Link>
-          </li>
-          <li>
-            <Link to="/pricing">Pricing</Link>
-          </li>
-          <li>
-            <Link to="/about">About Us</Link>
-          </li>
-        </ul>
+      {/* CTA BAND */}
+      <div className="footer-cta">
+        <h2>Ready to Transform Your Business?</h2>
+        <p>Join hundreds of businesses already growing with Kilimax</p>
+        <Link to="/getstarted" className="footer-cta-btn">Get Started Free →</Link>
+      </div>
 
-        <ul className="down">
-          <li>Connect</li>
-          {socials.map((s) => (
-            <li key={s.name}>
+      {/* MAIN FOOTER */}
+      <div className="footer-main">
+        <div className="footer-brand">
+          <Link to="/" className="footer-logo">
+            <img src="icon/log123.jpg" alt="Kilimax" width="50" height="30" />
+            <span>KILIMax</span>
+          </Link>
+          <p>Powering businesses across Africa with AI-driven software solutions</p>
+          <div className="footer-socials">
+            {socials.map((s) => (
               <a
+                key={s.name}
                 href={s.href}
                 target="_blank"
                 rel="noreferrer"
-                className="footer-social-link"
+                className="footer-social-icon"
+                title={s.name}
               >
-                <svg className="footer-social-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d={s.d} fill="currentColor"></path>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d={s.d} fill="currentColor" />
                 </svg>
-                <span>{s.name}</span>
               </a>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </div>
+        </div>
+
+        <div className="footer-links-group">
+          <h4>Quick Links</h4>
+          <ul>
+            {footerLinks.map((link) => (
+              <li key={link.to}>
+                <Link to={link.to}>{link.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="footer-links-group">
+          <h4>Legal</h4>
+          <ul>
+            {legalLinks.map((link) => (
+              <li key={link.to}>
+                <Link to={link.to}>{link.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="footer-links-group">
+          <h4>Contact</h4>
+          <ul>
+            <li><span className="footer-info-icon">📍</span> Nairobi, Kenya</li>
+            <li><span className="footer-info-icon">📧</span> hello@kilimax.com</li>
+            <li><span className="footer-info-icon">📞</span> +254 700 000 000</li>
+          </ul>
+        </div>
       </div>
 
-      <div>
-        <ul className="footer">
-          <li>Copyright &copy; 2026 QUANTUM TECHNOLOGY HK LIMITED. All rights reserved.</li>
-          <li>
-            <Link to="/terms">Terms of Conditions</Link>
-          </li>
-          <li>
-            <Link to="/policy">Privacy Policy</Link>
-          </li>
-        </ul>
+      {/* BOTTOM BAR */}
+      <div className="footer-bottom">
+        <p>&copy; 2026 QUANTUM TECHNOLOGY HK LIMITED. All rights reserved.</p>
       </div>
     </footer>
   );

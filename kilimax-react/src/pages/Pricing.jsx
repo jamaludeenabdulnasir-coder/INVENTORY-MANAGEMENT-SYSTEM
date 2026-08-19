@@ -1,156 +1,96 @@
 import { Link } from "react-router-dom";
 import FaqSection from "../components/FaqSection";
 
-const stories = [
+const plans = [
   {
-    img: "icon/customer 1.png",
-    name: "Max Buy",
-    title: "MaxBuy Streamlines 40+ Stores with Kilimax",
-    text: "One unified system cut through growing complexity, boosting stock accuracy, staff control, and turnover within months.",
-    to: "/stories/maxbuy",
+    name: "Point of Sale",
+    desc: "Sell anywhere, anytime. Fast checkout, mobile payments, multi-terminal access.",
+    features: ["Fast checkout", "Mobile payment options", "Multi-terminal access", "Online store integration"],
+    img: "icon/shot2.png",
   },
   {
-    img: "icon/customer 2.jpg",
-    name: "Toyar",
-    title: "Toyar's Breakthrough with Kilimax",
-    text: "Digitizing manual processes delivered faster operations, higher accuracy, and rapid growth - far sooner than expected.",
-    to: "/stories/toya",
+    name: "ERP",
+    desc: "Manage inventory, sales, customers, and finances from one powerful dashboard.",
+    features: ["Inventory management", "Sales tracking", "Financial reports", "Multi-store support"],
+    img: "icon/shot3.png",
   },
   {
-    img: "icon/customer 3.jpg",
-    name: "Trucom",
-    title: "Trucom Powers Faster Retail with Kilimax",
-    text: "By fixing slow reconciliation, stock gaps, and downtime, Trucom's Garden City shop moved to smoother and smarter retail.",
-    to: "#",
+    name: "E-Commerce",
+    desc: "Create a seamless online-to-offline experience for your customers.",
+    features: ["Online ordering", "In-store pickup", "Real-time sync", "Customer portal"],
+    img: "icon/shot4.png",
   },
+];
+
+const integrations = [
+  { label: "Faster checkout", icon: "⚡" },
+  { label: "Fewer Stock-outs", icon: "📦" },
+  { label: "Smarter Cash Collection", icon: "💰" },
+];
+
+const logos = [
+  "icon/logo.png", "icon/logo1.png", "icon/logo2.png", "icon/logo3.png",
+  "icon/logo4.png", "icon/logo5.png", "icon/logo6.png", "icon/logo7.png",
 ];
 
 export default function Pricing() {
   return (
     <main>
-      <div className="pricing-hero">
-        <img src="icon/shot.png" alt="" />
-      </div>
+      {/* HERO */}
+      <section className="pricing-hero-section">
+        <h1>All Business Operations, Simplified</h1>
+        <p>Choose the tools that fit your business — from POS to ERP to E-Commerce</p>
+        <img src="icon/shot.png" alt="Kilimax Dashboard" />
+      </section>
 
-      <div className="pricing-cta">
-        <h6>All Business operations, Simplified</h6>
-        <div className="operations" style={{ display: "flex", justifyContent: "center", gap: "30px", flexWrap: "wrap" }}>
-          <button className="business">
-            <Link to="/signin">Point of Sale</Link>
-          </button>
-          <button className="business">
-            <Link to="/signin">ERP</Link>
-          </button>
-          <button className="business">
-            <Link to="/signin">E-Commerce</Link>
-          </button>
-        </div>
+      {/* PRODUCT CARDS */}
+      <section className="pricing-cards-section">
+        {plans.map((plan, i) => (
+          <div key={i} className="pricing-card">
+            <img src={plan.img} alt={plan.name} />
+            <h3>{plan.name}</h3>
+            <p>{plan.desc}</p>
+            <ul>
+              {plan.features.map((f, j) => (
+                <li key={j}>{f}</li>
+              ))}
+            </ul>
+            <Link to="/signin" className="pricing-card-btn">Get Started →</Link>
+          </div>
+        ))}
+      </section>
 
-        <h6 className="sub-title">KiliPOs: Sell Anywhere,Anytime</h6>
-        <p>
-          Sell online seamlessly and continue serving customers without internet. Enjoy fast
-          checkout, mobile payment options, multi-terminal access,
-          <br /> and seamless integration with your online store.
-        </p>
-        <button id="bar">
-          <Link to="/getstarted">Get Started for Free</Link>
-        </button>
-      </div>
-
-      <img src="icon/shot1.png" alt="" style={{ width: "100%", padding: "20px" }} />
-
-      <div style={{ background: "blueviolet", padding: "20px 0" }}>
-        <div style={{ display: "flex", justifyContent: "space-around", flexWrap: "wrap" }}>
-          <img src="icon/shot2.png" alt="" width="400" height="300" />
-          <img src="icon/shot3.png" alt="" width="400" height="300" />
-          <img src="icon/shot4.png" alt="" width="400" height="300" />
-        </div>
-        <div style={{ display: "flex", justifyContent: "space-around", flexWrap: "wrap", paddingTop: "20px" }}>
-          <img src="icon/shot2.png" alt="" width="400" height="300" />
-          <img src="icon/shot3.png" alt="" width="400" height="300" />
-          <img src="icon/shot4.png" alt="" width="400" height="300" />
-        </div>
-      </div>
-
-      <div style={{ padding: "40px 20px" }}>
-        <h6>Integrate with Your Preferred Tools</h6>
-        <p style={{ display: "flex", justifyContent: "center", fontSize: "30px", textAlign: "center" }}>
-          Extend the scope of Kilimax to connect with your favourite business tools and fulfil
-          customer needs.
-        </p>
-        <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
-          <button className="bar1">
-            <Link to="/signin">Faster checkout</Link>
-          </button>
-          <button className="bar1">
-            <Link to="/signin">Fewer Stock-outs</Link>
-          </button>
-          <button className="bar1">
-            <Link to="/signin">Smarter Cash Collection</Link>
-          </button>
-        </div>
-      </div>
-
-      <div className="logo-row">
-        <img src="icon/logo.png" alt="" />
-        <img src="icon/logo1.png" alt="" />
-        <img src="icon/logo2.png" alt="" />
-        <img src="icon/logo3.png" alt="" />
-      </div>
-      <div className="logo-row">
-        <img src="icon/logo4.png" alt="" />
-        <img src="icon/logo5.png" alt="" />
-        <img src="icon/logo6.png" alt="" />
-        <img src="icon/logo7.png" alt="" />
-      </div>
-
-      <img src="icon/picture2.png" alt="" style={{ width: "100%" }} />
-
-      <div>
-        <h3>Blogs</h3>
-        <p style={{ display: "flex", justifyContent: "center", fontSize: "50px", textAlign: "center" }}>
-          Customer Stories
-        </p>
-        <p style={{ display: "flex", justifyContent: "center", textAlign: "center" }}>
-          See how businesses across Africa are transforming operations with Kilimax - streamlining
-          workflows, gaining visibility, and unlocking growth
-        </p>
-        <p style={{ display: "flex", justifyContent: "center", textAlign: "center" }}>
-          through smarter, connected systems.
-        </p>
-        <button>
-          <Link to="/customer">See all Stories</Link>
-        </button>
-
-        <div className="picture">
-          {stories.map((s, i) => (
-            <div key={i}>
-              <img src={s.img} alt="" width="300" height="310" />
-              <h4 className="highlight-green">{s.name}</h4>
-              <p>{s.title}</p>
-              <p>
-                {s.text}
-                <br />
-                <Link className="read-story" to={s.to}>
-                  Read Story →
-                </Link>
-              </p>
+      {/* INTEGRATIONS */}
+      <section className="integrations-section">
+        <span className="section-badge">Integrations</span>
+        <h3>Integrate with Your Preferred Tools</h3>
+        <p>Extend the scope of Kilimax to connect with your favourite business tools</p>
+        <div className="integrations-grid">
+          {integrations.map((item, i) => (
+            <div key={i} className="integration-item">
+              <span className="integration-icon">{item.icon}</span>
+              <span>{item.label}</span>
             </div>
           ))}
         </div>
-      </div>
+      </section>
 
-      <div style={{ paddingTop: "100px", textAlign: "center" }}>
-        <img src="icon/picture1.png" alt="" style={{ maxWidth: "100%" }} />
-        <img src="icon/picture2.png" alt="" style={{ paddingTop: "100px", maxWidth: "100%" }} />
-        <img src="icon/picture3.png" alt="" style={{ maxWidth: "100%" }} />
-      </div>
+      {/* LOGOS */}
+      <section className="logos-section">
+        <div className="logo-row">
+          {logos.map((logo, i) => (
+            <img key={i} src={logo} alt="" />
+          ))}
+        </div>
+      </section>
 
+      {/* FAQ */}
       <FaqSection />
 
-      <div style={{ textAlign: "center" }}>
-        <img style={{ padding: "200px 50px", maxWidth: "100%" }} src="icon/footer.png" alt="" />
-      </div>
+      {/* FOOTER BANNER */}
+      <section className="footer-banner">
+        <img src="icon/footer.png" alt="Kilimax" />
+      </section>
     </main>
   );
 }
