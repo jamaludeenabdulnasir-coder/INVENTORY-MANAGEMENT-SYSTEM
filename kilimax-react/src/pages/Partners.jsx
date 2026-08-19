@@ -232,8 +232,12 @@ export default function Partners() {
               <option value="technology">Technology Partner</option>
             </select>
           </div>
-          <button type="submit" className="partner-apply-btn">Submit Application →</button>
+          {serverError && <span className="partner-form-error" style={{ color: "#e74c3c", fontSize: 14, marginBottom: 12, display: "block" }}>{serverError}</span>}
+          <button type="submit" className="partner-apply-btn" disabled={loading}>
+            {loading ? "Submitting..." : "Submit Application →"}
+          </button>
         </form>
+        )}
       </section>
 
       {/* LOGOS */}
