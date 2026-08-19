@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function About() {
   return (
     <main>
@@ -81,9 +83,20 @@ export default function About() {
         </div>
       </section>
 
-      {/* FOOTER BANNER */}
-      <section className="footer-banner">
-        <img src="icon/footer.png" alt="Kilimax" />
+      {/* JOURNEY CTA */}
+      <section className="journey-cta">
+        <div className="journey-cta-inner">
+          <span className="section-badge light">Get Started Today</span>
+          <h2>Your Journey Starts Here</h2>
+          <p>
+            Join hundreds of businesses across Africa already growing with KiliMax.
+            Start your free trial today — no credit card required.
+          </p>
+          <div className="journey-cta-btns">
+            <Link to="/getstarted" className="journey-cta-primary">Start Free Trial →</Link>
+            <Link to="/pricing" className="journey-cta-secondary">View Pricing</Link>
+          </div>
+        </div>
       </section>
     </main>
   );

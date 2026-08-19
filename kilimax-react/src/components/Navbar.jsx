@@ -33,7 +33,7 @@ export default function Navbar() {
     <header>
       <nav className={`menu ${scrolled ? "scrolled" : ""}`}>
         <Link to="/" className="logo" onClick={closeMenu}>
-          <img src="icon/log123.jpg" alt="KILIMax logo" width="70" height="40" />
+          <img src="icon/log123.jpg" alt="KILIMax logo" width="50" height="30" />
           <span className="logo-text">KILIMax</span>
         </Link>
 

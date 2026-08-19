@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import FloatingContact from "./components/FloatingContact";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Pricing from "./pages/Pricing";
@@ -31,6 +32,7 @@ function SiteLayout() {
 export default function App() {
   return (
     <BrowserRouter>
+      <FloatingContact />
       <Routes>
         <Route element={<SiteLayout />}>
           <Route path="/" element={<Home />} />
