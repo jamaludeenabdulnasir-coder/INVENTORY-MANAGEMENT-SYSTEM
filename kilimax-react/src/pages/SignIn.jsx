@@ -31,15 +31,25 @@ export default function SignIn() {
     return errs;
   }, [form]);
 
-  const handleSubmit = useCallback((e) => {
+  const handleSubmit = useCallback(async (e) => {
     e.preventDefault();
     const errs = validate();
     setErrors(errs);
     setTouched({ email: true, password: true });
-    if (Object.keys(errs).length === 0) {
-      // TODO: handle sign in
+    if (Object.keys(errs).length > 0) return;
+
+    setLoading(true);
+    setServerError("");
+    try {
+      const { token } = await api.signin({ email: form.email, password: form.password });
+      localStorage.setItem("token", token);
+      navigate("/");
+    } catch (err) {
+      setServerError(err.message);
+    } finally {
+      setLoading(false);
     }
-  }, [validate]);
+  }, [form, validate, navigate]);
 
   return (
     <main className="si-page">
@@ -136,7 +146,11 @@ export default function SignIn() {
                 <span>Remember me for 30 days</span>
               </label>
 
-              <button type="submit" className="si-btn-primary">Sign In →</button>
+              {serverError && <span className="si-error" style={{ marginBottom: 12, display: "block" }}>{serverError}</span>}
+
+              <button type="submit" className="si-btn-primary" disabled={loading}>
+                {loading ? "Signing In..." : "Sign In →"}
+              </button>
             </form>
 
             <div className="si-divider">

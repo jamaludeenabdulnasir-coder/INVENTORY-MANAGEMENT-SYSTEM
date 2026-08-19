@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { api } from "../lib/api";
 
 const benefits = [
   {
@@ -69,8 +70,25 @@ const logos = [
 
 export default function Partners() {
   const [form, setForm] = useState({ name: "", email: "", phone: "", company: "", type: "" });
+  const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [serverError, setServerError] = useState("");
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setServerError("");
+    try {
+      await api.submitPartner(form);
+      setSubmitted(true);
+    } catch (err) {
+      setServerError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <main>
@@ -175,7 +193,16 @@ export default function Partners() {
           <h2>Become a KiliMax Partner</h2>
           <p>Fill out the form and our partnerships team will reach out within 48 hours.</p>
         </div>
-        <form className="partner-apply-form" onSubmit={(e) => e.preventDefault()}>
+        {submitted ? (
+          <div style={{ textAlign: "center", padding: "48px 24px" }}>
+            <div style={{ fontSize: 48, marginBottom: 16 }}>✅</div>
+            <h3 style={{ color: "#01241E", marginBottom: 8 }}>Application Submitted!</h3>
+            <p style={{ color: "#666", maxWidth: 400, margin: "0 auto" }}>
+              Our partnerships team will review your application and reach out within 48 hours.
+            </p>
+          </div>
+        ) : (
+          <form className="partner-apply-form" onSubmit={handleSubmit}>
           <div className="partner-form-row">
             <div className="partner-form-group">
               <label>Full Name *</label>
