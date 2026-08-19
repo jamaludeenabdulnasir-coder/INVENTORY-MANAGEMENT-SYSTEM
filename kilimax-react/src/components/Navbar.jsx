@@ -33,9 +33,7 @@ export default function Navbar() {
 
         <ul className={`menu-list ${menuOpen ? "active" : ""}`}>
           <li className="menu-brand">
-            <Link to="/" onClick={closeMenu}>
-              <span>KILIMax</span>
-            </Link>
+           
           </li>
           <li>
             <Link to="/products" onClick={closeMenu}>
