@@ -14,6 +14,9 @@ import Animation from "./pages/Animation";
 import Terms from "./pages/Terms";
 import Policy from "./pages/Policy";
 import Story from "./pages/Story";
+import AiAssistant from "./pages/AiAssistant";
+import KilliStore from "./pages/KilliStore";
+import KilliPOS from "./pages/KilliPOS";
 
 function SiteLayout() {
   return (
@@ -32,6 +35,9 @@ export default function App() {
         <Route element={<SiteLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/products/ai-assistant" element={<AiAssistant />} />
+          <Route path="/products/killistore" element={<KilliStore />} />
+          <Route path="/products/killipos" element={<KilliPOS />} />
           <Route path="/pricing" element={<Pricing />} />
           <Route path="/about" element={<About />} />
           <Route path="/partners" element={<Partners />} />

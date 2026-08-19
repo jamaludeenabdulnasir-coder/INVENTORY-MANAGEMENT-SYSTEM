@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -12,7 +14,20 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const closeMenu = () => setMenuOpen(false);
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setProductsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+    setProductsOpen(false);
+  };
 
   return (
     <header>
@@ -33,12 +48,38 @@ export default function Navbar() {
 
         <ul className={`menu-list ${menuOpen ? "active" : ""}`}>
           <li className="menu-brand">
-           
-          </li>
-          <li>
-            <Link to="/products" onClick={closeMenu}>
-              Products
+            <Link to="/" onClick={closeMenu}>
+              <span>KILIMax</span>
             </Link>
+          </li>
+          <li
+            className={`dropdown-parent ${productsOpen ? "open" : ""}`}
+            ref={dropdownRef}
+          >
+            <button
+              className="dropdown-toggle"
+              onClick={() => setProductsOpen((o) => !o)}
+            >
+              Products
+              <span className={`dropdown-arrow ${productsOpen ? "rotated" : ""}`}>▾</span>
+            </button>
+            <ul className={`dropdown-menu ${productsOpen ? "show" : ""}`}>
+              <li>
+                <Link to="/products/ai-assistant" onClick={closeMenu}>
+                  AI Assistant
+                </Link>
+              </li>
+              <li>
+                <Link to="/products/killistore" onClick={closeMenu}>
+                  KilliStore
+                </Link>
+              </li>
+              <li>
+                <Link to="/products/killipos" onClick={closeMenu}>
+                  KilliPOS
+                </Link>
+              </li>
+            </ul>
           </li>
           <li>
             <Link to="/pricing" onClick={closeMenu}>

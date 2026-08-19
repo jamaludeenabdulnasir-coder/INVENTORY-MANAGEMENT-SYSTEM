@@ -37,7 +37,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  overflow: hidden;
+  overflow: visible;
   transition: box-shadow 0.3s ease, background 0.3s ease;
 }
 
@@ -122,6 +122,89 @@ nav.scrolled {
   transform: scaleX(1);
 }
 
+/* ==================== PRODUCTS DROPDOWN ==================== */
+.dropdown-parent {
+  position: relative;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 8px 4px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #1a2e26;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.3s ease;
+  border-radius: 0;
+}
+
+.dropdown-toggle:hover {
+  color: #0aa876;
+}
+
+.dropdown-arrow {
+  font-size: 10px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.dropdown-arrow.rotated {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  min-width: 280px;
+  border-radius: 16px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+  list-style: none;
+  padding: 12px 0;
+  margin: 10px 0 0 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.25s ease;
+  z-index: 1001;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu li {
+  padding: 0;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 14px 24px;
+  color: #1a2e26 !important;
+  font-weight: 500;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  border-radius: 0;
+}
+
+.dropdown-menu a::after {
+  display: none !important;
+}
+
+.dropdown-menu a:hover {
+  background: #EDF9F6;
+  color: #0aa876 !important;
+  padding-left: 25px;
+}
+
 .signin {
   border: 1.5px solid #0aa876;
   padding: 10px 20px;
@@ -132,6 +215,8 @@ nav.scrolled {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 .signin:hover {
@@ -141,20 +226,29 @@ nav.scrolled {
 
 #bar {
   border: none;
-  padding: 12px 24px;
+  padding: 12px 28px;
   border-radius: 2rem;
   background: linear-gradient(135deg, #0aa876 0%, #01241e 100%);
   color: white !important;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(10, 168, 118, 0.3);
+  box-shadow: 0 4px 20px rgba(10, 168, 118, 0.4);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 #bar:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(10, 168, 118, 0.45);
-  background: linear-gradient(135deg, #0cbf8b 0%, #01382c 100%);
+  box-shadow: 0 8px 30px rgba(10, 168, 118, 0.55);
+  background: linear-gradient(135deg, #0cbf8b 0%, #024a35 100%);
+}
+
+#bar a {
+  color: white !important;
+  text-decoration: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
 }
 
 h1 {
@@ -469,6 +563,42 @@ nav .hamburger {
     background: transparent;
   }
 
+  .dropdown-toggle {
+    width: 100%;
+    justify-content: space-between;
+    color: rgba(255, 255, 255, 0.85);
+    padding: 14px 18px;
+    font-size: 17px;
+    text-align: left;
+  }
+
+  .dropdown-toggle:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .dropdown-menu {
+    position: static;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: none;
+    border-radius: 10px;
+    margin: 4px 0 8px 0;
+    padding: 4px 0;
+    transform: none;
+  }
+
+  .dropdown-menu a {
+    padding: 12px 30px;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.75) !important;
+  }
+
+  .dropdown-menu a:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: white !important;
+    padding-left: 35px;
+  }
+
   .menu-list.active + .menu-overlay {
     opacity: 1;
     visibility: visible;
@@ -607,7 +737,7 @@ nav .hamburger {
 
 .hero-section .form.hero-btn,
 .hero-btn {
-  background: linear-gradient(135deg, #FF6B35 0%, #ff4500 100%);
+  background: linear-gradient(135deg, #0dd3a0 0%, #0aa876 100%);
   border: none;
   padding: 16px 44px;
   font-size: 18px;
@@ -616,7 +746,7 @@ nav .hamburger {
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 25px rgba(255, 107, 53, 0.5);
+  box-shadow: 0 6px 25px rgba(13, 211, 160, 0.5);
   display: inline-block;
   text-decoration: none;
   letter-spacing: 0.5px;
@@ -625,8 +755,8 @@ nav .hamburger {
 .hero-section .form.hero-btn:hover,
 .hero-btn:hover {
   transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 10px 35px rgba(255, 107, 53, 0.7);
-  background: linear-gradient(135deg, #e55a2b 0%, #e03e00 100%);
+  box-shadow: 0 10px 35px rgba(13, 211, 160, 0.7);
+  background: linear-gradient(135deg, #3ee6ae 0%, #0dd3a0 100%);
   color: white;
 }
 
@@ -1007,19 +1137,31 @@ nav .hamburger {
 
 /* ==================== FAQ SECTION ==================== */
 .faq-section {
-  padding: 60px 20px;
+  padding: 80px 20px;
   background: #f8faf9;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .faq-section h3 {
   display: block;
   text-align: center;
   color: #01241E;
-  font-size: clamp(24px, 4vw, 32px);
-  font-weight: 700;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.faq-subtitle {
+  color: #666;
+  font-size: 17px;
   margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.faq-list {
+  text-align: left;
 }
 
 .dropdown, .dropdown1, .dropdown2, .dropdown3, .dropdown4, .dropdown5, .dropdown6, .dropdown7 {
@@ -1264,6 +1406,102 @@ h3 {
   opacity: 1;
 }
 
+/* ==================== PRODUCT DETAIL PAGES ==================== */
+.product-hero {
+  background: linear-gradient(135deg, #01241E 0%, #1a5c43 50%, #2d8a5e 100%);
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.product-hero h1 {
+  color: white;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800;
+  margin-bottom: 15px;
+}
+
+.product-hero p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(16px, 2.5vw, 20px);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.product-content {
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.product-info h2 {
+  font-size: clamp(24px, 4vw, 36px);
+  color: #01241E;
+  margin-bottom: 15px;
+}
+
+.product-info > p {
+  color: #555;
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.product-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.pf-item {
+  background: #EDF9F6;
+  border-radius: 16px;
+  padding: 30px;
+  transition: all 0.3s ease;
+}
+
+.pf-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.pf-item h4 {
+  color: #0aa876;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.pf-item p {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.product-cta {
+  display: inline-block;
+  background: linear-gradient(135deg, #FF6B35 0%, #ff4500 100%);
+  color: white;
+  padding: 16px 40px;
+  border-radius: 50px;
+  font-size: 17px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 25px rgba(255, 107, 53, 0.4);
+}
+
+.product-cta:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 35px rgba(255, 107, 53, 0.6);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .product-features {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ==================== PRICING PAGE ==================== */
 .business {
   border: 1px solid green;
@@ -1506,6 +1744,28 @@ h6 {
   .auth-container .left {
     height: 200px;
   }
+
+  .faq-header {
+    padding: 18px 20px;
+  }
+
+  .faq-question {
+    font-size: 16px;
+  }
+
+  .faq-answer {
+    padding: 0 20px 20px 20px;
+  }
+
+  .faq-answer p {
+    font-size: 15px;
+  }
+
+  .faq-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+  }
 }
 
 /* ==================== PARTNERS PAGE ==================== */
@@ -1674,58 +1934,96 @@ h6 {
 
 /* ==================== FAQ ITEM (REACT) ==================== */
 .faq-item {
-  margin-bottom: 15px;
-  border-radius: 12px;
+  margin-bottom: 12px;
+  border-radius: 16px;
   overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
 }
 
-.faq-item .dropdown-header {
+.faq-item:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.faq-header {
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: white;
-  padding: 18px 25px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
+  padding: 22px 28px;
+  gap: 15px;
   transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  border: none;
 }
 
-.faq-item .dropdown-header:hover {
+.faq-header:hover {
   background: #EDF9F6;
-  color: #01241E;
 }
 
-.faq-item .icon {
-  color: #4CAF50;
-  font-size: 12px;
-  transition: transform 0.3s ease;
+.faq-header.active {
+  background: #EDF9F6;
+  padding-bottom: 0;
 }
 
-.faq-item .dropdown-header.active .icon {
-  transform: rotate(180deg);
+.faq-question {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a2e26;
+  line-height: 1.4;
 }
 
-.faq-item .faq-content {
-  padding: 0;
-  background: white;
+.faq-header.active .faq-question {
+  color: #0aa876;
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0aa876;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+.faq-icon.rotated {
+  background: #01241E;
+  transform: rotate(45deg);
+}
+
+.faq-body {
   max-height: 0;
   overflow: hidden;
-  transition: all 0.4s ease;
+  transition: max-height 0.4s ease, padding 0.4s ease;
 }
 
-.faq-item .faq-content.show {
-  padding: 20px 25px;
-  max-height: 300px;
+.faq-body.open {
+  max-height: 600px;
 }
 
-.faq-item .faq-content img {
-  max-width: 100%;
+.faq-answer {
+  padding: 0 28px 24px 28px;
+}
+
+.faq-answer p {
+  color: #555;
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.faq-answer img {
+  width: 100%;
+  max-width: 700px;
   height: auto;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* ==================== MISC LAYOUT HELPERS ==================== */
