@@ -1,14 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const closeMenu = () => setMenuOpen(false);
 
   return (
     <header>
-      <nav className="menu">
+      <nav className={`menu ${scrolled ? "scrolled" : ""}`}>
         <Link to="/" className="logo" onClick={closeMenu}>
           <img src="icon/log123.jpg" alt="KILIMax logo" width="70" height="40" />
           <span className="logo-text">KILIMax</span>
@@ -24,6 +32,11 @@ export default function Navbar() {
         </div>
 
         <ul className={`menu-list ${menuOpen ? "active" : ""}`}>
+          <li className="menu-brand">
+            <Link to="/" onClick={closeMenu}>
+              <span>KILIMax</span>
+            </Link>
+          </li>
           <li>
             <Link to="/products" onClick={closeMenu}>
               Products
