@@ -1,6 +1,4 @@
-
 export const DIRECT_RENDER_URL = "https://killimax-backend.onrender.com";
-
 
 export function getBaseUrl() {
   const envUrl = (DIRECT_RENDER_URL || import.meta.env.VITE_API_URL || "").trim();
@@ -10,9 +8,6 @@ export function getBaseUrl() {
   return clean.endsWith("/api") ? clean : `${clean}/api`;
 }
 
-/**
- * Universal request wrapper with resilient error handling and Render wake-up tolerance.
- */
 async function request(path, { method = "GET", body, token, headers: customHeaders } = {}) {
   const base = getBaseUrl();
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
@@ -35,7 +30,6 @@ async function request(path, { method = "GET", body, token, headers: customHeade
       body: body ? JSON.stringify(body) : undefined,
     });
   } catch (err) {
-    // Catch CORS / Network / DNS errors (e.g. Render instance sleeping or unreachable)
     console.error(`[API Network Error] ${method} ${url}:`, err);
     throw new Error(
       "Unable to connect to server. If the server is on Render free tier, it may be waking up (takes ~30-50s). Please try again shortly."
@@ -51,7 +45,6 @@ async function request(path, { method = "GET", body, token, headers: customHeade
       data = {};
     }
   } else {
-    // If server returned text/html (e.g. 502 Bad Gateway or 404 page)
     const text = await res.text().catch(() => "");
     data = { message: text || `Server returned status ${res.status}` };
   }
@@ -66,11 +59,11 @@ async function request(path, { method = "GET", body, token, headers: customHeade
 
 export const api = {
   getBaseUrl,
-
-  // Health check
   health: () => request("/health"),
 
-  // Auth
+  // Auth & Verification
+  sendVerificationCode: (email) => request("/auth/send-code", { method: "POST", body: { email } }),
+  verifyCode: (email, code) => request("/auth/verify-code", { method: "POST", body: { email, code } }),
   signup: (data) => request("/auth/signup", { method: "POST", body: data }),
   signin: (data) => request("/auth/signin", { method: "POST", body: data }),
   me: (token) => request("/auth/me", { token }),

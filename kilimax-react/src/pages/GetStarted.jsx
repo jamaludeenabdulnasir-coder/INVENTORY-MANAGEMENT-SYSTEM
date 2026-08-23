@@ -1,8 +1,8 @@
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../lib/api";
 
-const STEPS = ["Account Info", "Security"];
+const STEPS = ["Account Info", "Security", "Verification"];
 
 function validateEmail(v) {
   if (!v) return "Email is required";
@@ -25,6 +25,12 @@ function validatePassword(v) {
 function validateConfirm(v, pw) {
   if (!v) return "Please confirm your password";
   if (v !== pw) return "Passwords do not match";
+  return "";
+}
+
+function validateCode(v) {
+  if (!v) return "Verification code is required";
+  if (!/^\d{4,8}$/.test(v.trim())) return "Enter the 6-digit verification code";
   return "";
 }
 
@@ -55,6 +61,7 @@ export default function GetStarted() {
     phone: "",
     password: "",
     confirmPassword: "",
+    code: "",
     agree: false,
   });
 
@@ -62,10 +69,22 @@ export default function GetStarted() {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState("");
+  const [infoMessage, setInfoMessage] = useState("");
+  const [countdown, setCountdown] = useState(0);
+
+  // Resend cooldown timer
+  useEffect(() => {
+    if (countdown <= 0) return;
+    const timer = setInterval(() => {
+      setCountdown((prev) => prev - 1);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [countdown]);
 
   const handleChange = useCallback((e) => {
     const { name, value, type, checked } = e.target;
     setForm((prev) => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
+    setErrors((prev) => ({ ...prev, [name]: "" }));
   }, []);
 
   const handleBlur = useCallback((name) => {
@@ -80,6 +99,7 @@ export default function GetStarted() {
         case "phone": return validatePhone(form.phone);
         case "password": return validatePassword(form.password);
         case "confirmPassword": return validateConfirm(form.confirmPassword, form.password);
+        case "code": return validateCode(form.code);
         default: return "";
       }
     },
@@ -88,7 +108,13 @@ export default function GetStarted() {
 
   const validateStep = useCallback(
     (s) => {
-      const fields = s === 0 ? ["email", "phone"] : ["password", "confirmPassword"];
+      const fields =
+        s === 0
+          ? ["email", "phone"]
+          : s === 1
+          ? ["password", "confirmPassword"]
+          : ["code"];
+
       const newErrors = {};
       let valid = true;
       fields.forEach((f) => {
@@ -107,34 +133,95 @@ export default function GetStarted() {
     [validateField]
   );
 
-  const goNext = useCallback(() => {
+  // Step 0 -> Step 1 or Step 1 -> Step 2
+  const goNext = useCallback(async () => {
     if (!validateStep(step)) return;
-    setDirection("next");
-    setStep((s) => Math.min(s + 1, STEPS.length - 1));
-  }, [step, validateStep]);
 
-  const goBack = useCallback(() => {
-    setDirection("back");
-    setStep((s) => Math.max(s - 1, 0));
-  }, []);
+    if (step === 0) {
+      setDirection("next");
+      setStep(1);
+      return;
+    }
 
-  const handleSubmit = useCallback(
-    async (e) => {
-      e.preventDefault();
-      if (!validateStep(step)) return;
+    if (step === 1) {
       if (!form.agree) {
         setErrors((prev) => ({ ...prev, agree: "You must agree to the terms" }));
         return;
       }
+
+      setLoading(true);
+      setServerError("");
+      setInfoMessage("");
+      try {
+        const res = await api.sendVerificationCode(form.email);
+        setDirection("next");
+        setStep(2);
+        setCountdown(60);
+        setInfoMessage(
+          res.code
+            ? `Verification code sent! (Your code is: ${res.code})`
+            : `Verification code sent to ${form.email}`
+        );
+        if (res.code) {
+          setForm((prev) => ({ ...prev, code: res.code }));
+        }
+      } catch (err) {
+        setServerError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+  }, [step, form, validateStep]);
+
+  const goBack = useCallback(() => {
+    setDirection("back");
+    setServerError("");
+    setInfoMessage("");
+    setStep((s) => Math.max(s - 1, 0));
+  }, []);
+
+  const handleResendCode = useCallback(async () => {
+    if (countdown > 0) return;
+    setLoading(true);
+    setServerError("");
+    setInfoMessage("");
+    try {
+      const res = await api.sendVerificationCode(form.email);
+      setCountdown(60);
+      setInfoMessage(
+        res.code
+          ? `New code sent! (Your code is: ${res.code})`
+          : `New verification code sent to ${form.email}`
+      );
+      if (res.code) {
+        setForm((prev) => ({ ...prev, code: res.code }));
+      }
+    } catch (err) {
+      setServerError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }, [form.email, countdown]);
+
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+      if (!validateStep(2)) return;
+
       setLoading(true);
       setServerError("");
       try {
-        await api.signup({
+        const { token } = await api.signup({
           name: form.email.split("@")[0],
           email: form.email,
           phone: form.phone,
           password: form.password,
+          code: form.code,
         });
+
+        if (token) {
+          localStorage.setItem("token", token);
+        }
         setSubmitted(true);
       } catch (err) {
         setServerError(err.message);
@@ -142,14 +229,15 @@ export default function GetStarted() {
         setLoading(false);
       }
     },
-    [step, form, validateStep]
+    [form, validateStep]
   );
 
   const strength = useMemo(() => passwordStrength(form.password), [form.password]);
 
   const stepErrors = useMemo(() => {
     if (step === 0) return [errors.email, errors.phone];
-    return [errors.password, errors.confirmPassword];
+    if (step === 1) return [errors.password, errors.confirmPassword];
+    return [errors.code];
   }, [step, errors]);
 
   const hasStepErrors = stepErrors.some(Boolean);
@@ -170,8 +258,8 @@ export default function GetStarted() {
               <path fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" className="gs-check-path" />
             </svg>
           </div>
-          <h2>Account Created!</h2>
-          <p>Welcome to KiliMax! Your account <strong>{form.email}</strong> has been created successfully.</p>
+          <h2>Account Created & Verified!</h2>
+          <p>Welcome to KiliMax! Your account <strong>{form.email}</strong> has been successfully verified.</p>
           <Link to="/signin" className="gs-btn-primary">Go to Sign In →</Link>
         </div>
       </main>
@@ -243,7 +331,7 @@ export default function GetStarted() {
             </div>
 
             {/* FORM */}
-            <form onSubmit={handleSubmit} noValidate>
+            <form onSubmit={step === 2 ? handleSubmit : (e) => { e.preventDefault(); goNext(); }} noValidate>
               <div className={`gs-step-panel ${direction}`} key={step}>
                 {step === 0 && (
                   <>
@@ -358,23 +446,83 @@ export default function GetStarted() {
                     {errors.agree && <span className="gs-error" style={{ marginTop: -10 }}>{errors.agree}</span>}
                   </>
                 )}
+
+                {step === 2 && (
+                  <>
+                    <div style={{ marginBottom: 16 }}>
+                      <p style={{ fontSize: 14, color: "#444", marginBottom: 6 }}>
+                        We sent a 6-digit verification code to <strong>{form.email}</strong>.
+                      </p>
+                      {infoMessage && (
+                        <div style={{ background: "#e8f8f2", border: "1px solid #a3e6cd", color: "#066a4a", padding: "10px 14px", borderRadius: 8, fontSize: 13, marginBottom: 14 }}>
+                          ✓ {infoMessage}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="gs-field">
+                      <label>6-Digit Verification Code *</label>
+                      <div className={`gs-input-wrap ${touched.code && errors.code ? "error" : ""} ${touched.code && !errors.code && form.code ? "valid" : ""}`}>
+                        <span className="gs-input-icon">🔑</span>
+                        <input
+                          type="text"
+                          name="code"
+                          maxLength={8}
+                          placeholder="e.g. 123456"
+                          value={form.code}
+                          onChange={handleChange}
+                          onBlur={() => handleBlur("code")}
+                          autoFocus
+                          style={{ letterSpacing: "2px", fontWeight: "700" }}
+                        />
+                        {touched.code && !errors.code && form.code && <span className="gs-valid-icon">✓</span>}
+                      </div>
+                      {touched.code && errors.code && <span className="gs-error">{errors.code}</span>}
+                    </div>
+
+                    <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 6, marginBottom: 12 }}>
+                      <button
+                        type="button"
+                        onClick={handleResendCode}
+                        disabled={countdown > 0 || loading}
+                        style={{
+                          background: "none",
+                          border: "none",
+                          color: countdown > 0 ? "#999" : "#0aa876",
+                          fontSize: 13,
+                          fontWeight: 600,
+                          cursor: countdown > 0 ? "not-allowed" : "pointer",
+                          padding: 0,
+                        }}
+                      >
+                        {countdown > 0 ? `Resend Code in ${countdown}s` : "Resend Verification Code"}
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
 
               {/* BUTTONS */}
               {serverError && <span className="gs-error" style={{ marginBottom: 12, display: "block" }}>{serverError}</span>}
               <div className="gs-btn-row">
                 {step > 0 && (
-                  <button type="button" className="gs-btn-back" onClick={goBack}>
+                  <button type="button" className="gs-btn-back" onClick={goBack} disabled={loading}>
                     ← Back
                   </button>
                 )}
-                {step < STEPS.length - 1 ? (
+                {step === 0 && (
                   <button type="button" className="gs-btn-primary" onClick={goNext} disabled={hasStepErrors && touched.email}>
                     Continue →
                   </button>
-                ) : (
+                )}
+                {step === 1 && (
+                  <button type="button" className="gs-btn-primary" onClick={goNext} disabled={loading}>
+                    {loading ? "Sending Code..." : "Get Verification Code →"}
+                  </button>
+                )}
+                {step === 2 && (
                   <button type="submit" className="gs-btn-primary" disabled={loading}>
-                    {loading ? "Creating Account..." : "Create Account →"}
+                    {loading ? "Verifying..." : "Verify & Create Account →"}
                   </button>
                 )}
               </div>
