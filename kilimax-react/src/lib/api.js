@@ -60,15 +60,10 @@ async function request(path, { method = "GET", body, token, headers: customHeade
 export const api = {
   getBaseUrl,
   health: () => request("/health"),
-
-  // Auth & Verification
-  sendVerificationCode: (email) => request("/auth/send-code", { method: "POST", body: { email } }),
-  verifyCode: (email, code) => request("/auth/verify-code", { method: "POST", body: { email, code } }),
   signup: (data) => request("/auth/signup", { method: "POST", body: data }),
   signin: (data) => request("/auth/signin", { method: "POST", body: data }),
   me: (token) => request("/auth/me", { token }),
 
-  // Products
   getProducts: (params) => {
     const qs = params ? `?${new URLSearchParams(params).toString()}` : "";
     return request(`/products${qs}`);
@@ -78,14 +73,12 @@ export const api = {
   updateProduct: (id, data, token) => request(`/products/${id}`, { method: "PUT", body: data, token }),
   deleteProduct: (id, token) => request(`/products/${id}`, { method: "DELETE", token }),
 
-  // Partners
   submitPartner: (data) => request("/partners", { method: "POST", body: data }),
   getPartners: (token, params) => {
     const qs = params ? `?${new URLSearchParams(params).toString()}` : "";
     return request(`/partners${qs}`, { token });
   },
 
-  // Stories
   getStories: (params) => {
     const qs = params ? `?${new URLSearchParams(params).toString()}` : "";
     return request(`/stories${qs}`);

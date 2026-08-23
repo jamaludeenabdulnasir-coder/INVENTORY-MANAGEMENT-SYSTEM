@@ -18,7 +18,7 @@ const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/kilimax";
 // You can add your exact custom Vercel domain here if you have one
 const DIRECT_ALLOWED_ORIGINS = [
 
-  "https://kilimax-react.vercel.app/",
+  "https://kilimax-react.vercel.app/", is
   "http://127.0.0.1:5173",
   "http://127.0.0.1:3000",
 ];
