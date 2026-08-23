@@ -2,7 +2,7 @@ import { useState, useCallback, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { api } from "../lib/api";
 
-const STEPS = ["Account Info", "Security", "Verification"];
+const STEPS = ["Account Info", "Security"];
 
 function validateEmail(v) {
   if (!v) return "Email is required";
@@ -25,12 +25,6 @@ function validatePassword(v) {
 function validateConfirm(v, pw) {
   if (!v) return "Please confirm your password";
   if (v !== pw) return "Passwords do not match";
-  return "";
-}
-
-function validateCode(v) {
-  if (!v) return "Verification code is required";
-  if (v.length < 4) return "Enter a valid code";
   return "";
 }
 
@@ -61,7 +55,6 @@ export default function GetStarted() {
     phone: "",
     password: "",
     confirmPassword: "",
-    code: "",
     agree: false,
   });
 
@@ -87,7 +80,6 @@ export default function GetStarted() {
         case "phone": return validatePhone(form.phone);
         case "password": return validatePassword(form.password);
         case "confirmPassword": return validateConfirm(form.confirmPassword, form.password);
-        case "code": return validateCode(form.code);
         default: return "";
       }
     },
@@ -96,7 +88,7 @@ export default function GetStarted() {
 
   const validateStep = useCallback(
     (s) => {
-      const fields = s === 0 ? ["email", "phone"] : s === 1 ? ["password", "confirmPassword"] : ["code"];
+      const fields = s === 0 ? ["email", "phone"] : ["password", "confirmPassword"];
       const newErrors = {};
       let valid = true;
       fields.forEach((f) => {
@@ -157,8 +149,7 @@ export default function GetStarted() {
 
   const stepErrors = useMemo(() => {
     if (step === 0) return [errors.email, errors.phone];
-    if (step === 1) return [errors.password, errors.confirmPassword];
-    return [errors.code];
+    return [errors.password, errors.confirmPassword];
   }, [step, errors]);
 
   const hasStepErrors = stepErrors.some(Boolean);
@@ -180,7 +171,7 @@ export default function GetStarted() {
             </svg>
           </div>
           <h2>Account Created!</h2>
-          <p>Welcome to KiliMax. We've sent a confirmation to <strong>{form.email}</strong></p>
+          <p>Welcome to KiliMax! Your account <strong>{form.email}</strong> has been created successfully.</p>
           <Link to="/signin" className="gs-btn-primary">Go to Sign In →</Link>
         </div>
       </main>
@@ -348,27 +339,6 @@ export default function GetStarted() {
                         </button>
                       </div>
                       {touched.confirmPassword && errors.confirmPassword && <span className="gs-error">{errors.confirmPassword}</span>}
-                    </div>
-                  </>
-                )}
-
-                {step === 2 && (
-                  <>
-                    <div className="gs-field">
-                      <label>Verification Code *</label>
-                      <div className={`gs-input-wrap ${touched.code && errors.code ? "error" : ""} ${touched.code && !errors.code && form.code ? "valid" : ""}`}>
-                        <span className="gs-input-icon">🔑</span>
-                        <input
-                          type="text"
-                          name="code"
-                          placeholder="Enter the code sent to your email"
-                          value={form.code}
-                          onChange={handleChange}
-                          onBlur={() => handleBlur("code")}
-                        />
-                        {touched.code && !errors.code && form.code && <span className="gs-valid-icon">✓</span>}
-                      </div>
-                      {touched.code && errors.code && <span className="gs-error">{errors.code}</span>}
                     </div>
 
                     <label className="gs-checkbox">
