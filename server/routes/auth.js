@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { body, validationResult } from "express-validator";
 import User from "../models/User.js";
-import { generateToken } from "../middleware/auth.js";
+import { generateToken, authenticate } from "../middleware/auth.js";
 
 const router = Router();
 
@@ -76,22 +76,8 @@ router.post(
 );
 
 // GET /api/auth/me
-router.get("/me", async (req, res) => {
-  try {
-    const header = req.headers.authorization;
-    if (!header?.startsWith("Bearer ")) {
-      return res.status(401).json({ message: "No token" });
-    }
-
-    const jwt = await import("jsonwebtoken");
-    const decoded = jwt.default.verify(header.split(" ")[1], process.env.JWT_SECRET || "kilimax-dev-secret-change-in-production");
-    const user = await (await import("../models/User.js")).default.findById(decoded.id).select("-password");
-
-    if (!user) return res.status(404).json({ message: "User not found" });
-    res.json({ user });
-  } catch (err) {
-    res.status(401).json({ message: "Invalid token" });
-  }
+router.get("/me", authenticate, (req, res) => {
+  res.json({ user: req.user });
 });
 
 export default router;
